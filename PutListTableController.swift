@@ -8,16 +8,31 @@
 
 import UIKit
 
-class PutListTableController: UITableViewController {
+class PutListTableController: UITableViewController, UITextFieldDelegate {
 
+    var voteAnswer: String?
+    var voteNum: Int?
+    var votePrice: Int?
+    var voteFee: Int?
+    var voteLength: Int?
+    var voteDays: Int?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        self.title = "添加问题"
+        
+        print(voteAnswer!)
+        print(voteNum!)
+        print(votePrice!)
+        print(voteFee!)
+        print(voteLength!)
+        print(voteDays!)
+        
+        tableView.separatorColor = UIColor(white: 1, alpha: 0)
+        
         // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
+        self.clearsSelectionOnViewWillAppear = false
     }
 
     override func didReceiveMemoryWarning() {
@@ -27,25 +42,22 @@ class PutListTableController: UITableViewController {
 
     // MARK: - Table view data source
 
-    override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 0
-    }
-
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 0
+        return voteLength!
     }
 
-    /*
+    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! PutListCell
 
         // Configure the cell...
-
+        
+        cell.sortNum.text = String(indexPath.row + 1)
+        
         return cell
     }
-    */
+    
 
     /*
     // Override to support conditional editing of the table view.
@@ -92,4 +104,12 @@ class PutListTableController: UITableViewController {
     }
     */
 
+    //MARK：actions
+    func createTextFiled(_ obj: UITableViewCell) -> UITextField {
+        let input = UITextField()
+        
+        
+        return input
+    }
+    
 }
