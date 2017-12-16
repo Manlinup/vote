@@ -1,22 +1,20 @@
 //
-//  PutListCell.swift
+//  VoteListsCell.swift
 //  Vote
 //
-//  Created by 林以达 on 2017/11/16.
+//  Created by 林以达 on 2017/11/14.
 //  Copyright © 2017年 林以达. All rights reserved.
 //
 
 import UIKit
 
-class PutListCell: UITableViewCell {
+class VoteListsCell: UITableViewCell {
 
-    //MARK: Properties
-
+    @IBOutlet weak var voteTitle: UILabel!
+    @IBOutlet weak var voteTime: UILabel!
+    @IBOutlet weak var votePrice: UILabel!
     
-    @IBOutlet weak var topictitle: UILabel!//题目标题
     
-    @IBOutlet weak var topictype: UILabel!//题目类型
-    var radio: Bool = false
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -28,6 +26,5 @@ class PutListCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
-    
-    
+
 }

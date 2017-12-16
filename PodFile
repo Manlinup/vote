@@ -1,0 +1,5 @@
+use_frameworks!
+target 'Vote' do
+    pod ''
+    pod ''
+end

@@ -1,23 +1,16 @@
 //
-//  PutListCell.swift
+//  EditUserInformationTwoTableViewCell.swift
 //  Vote
 //
-//  Created by 林以达 on 2017/11/16.
+//  Created by mc on 2017/12/7.
 //  Copyright © 2017年 林以达. All rights reserved.
 //
 
 import UIKit
 
-class PutListCell: UITableViewCell {
-
-    //MARK: Properties
-
+class EditUserInformationTwoTableViewCell: UITableViewCell {
     
-    @IBOutlet weak var topictitle: UILabel!//题目标题
-    
-    @IBOutlet weak var topictype: UILabel!//题目类型
-    var radio: Bool = false
-    
+    @IBOutlet weak var labeltext: UILabel!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -28,6 +21,5 @@ class PutListCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
-    
-    
+
 }

@@ -23,28 +23,44 @@ class PutMainTableController: UITableViewController, UITextFieldDelegate {
     var voteFee: Int?
     var voteLength: String?
     var voteDays: String?
-    
+    var voteName: String?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        print("启动")
         
         answer.delegate = self
         num.delegate = self
         price.delegate = self
         length.delegate = self
         days.delegate = self
-        
+         view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(handTap)))
         tableView.separatorColor = UIColor(white: 1, alpha: 0)
         
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
+        self.title = voteName
+        
+        var placeholdercolor = UIColor.init(red: 170/255, green: 170/255, blue: 170/255, alpha: 1)
+        answer.setValue(placeholdercolor, forKeyPath: "placeholderLabel.textColor")//设置placeholder颜色
+        num.setValue(placeholdercolor, forKeyPath: "placeholderLabel.textColor")//设置placeholder颜色
+        price.setValue(placeholdercolor, forKeyPath: "placeholderLabel.textColor")//设置placeholder颜色
+        length.setValue(placeholdercolor, forKeyPath: "placeholderLabel.textColor")//设置placeholder颜色
+        days.setValue(placeholdercolor, forKeyPath: "placeholderLabel.textColor")//设置placeholder颜色
+        
+        
+        self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action:nil)//导航返回按钮样式
     }
-
+     
+    
+    @objc func handTap (sender:UITapGestureRecognizer){
+        if sender.state == .ended{
+            answer.resignFirstResponder()
+            num.resignFirstResponder()
+            price.resignFirstResponder()
+            length.resignFirstResponder()
+            days.resignFirstResponder()
+        }
+        sender.cancelsTouchesInView = false
+    }
+    
     //MARK: UITextFieldDelegate
     
     func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
@@ -71,15 +87,47 @@ class PutMainTableController: UITableViewController, UITextFieldDelegate {
         case answer:
             voteAnswer = newText
         case num:
-            voteNum = newText
+            voteNum = newText//样本数量
+            return textFieldVariety(9,textField,range,string)//限制长度，非数字输入
         case price:
-            votePrice = newText
+            votePrice = newText//样本单价
+            return textFieldVariety(4,textField,range,string)//限制长度，非数字输入
         case length:
-            voteLength = newText
+            voteLength = newText//样本长度
+            return textFieldVariety(4,textField,range,string)//限制长度，非数字输入
         case days:
-            voteDays = newText
+            voteDays = newText//样本周期
+             return textFieldVariety(4,textField,range,string)//限制长度，非数字输入
         default:
             break
+        }
+//        if voteNum != nil, votePrice != nil {
+//            if let voteNum2 = Int(voteNum!) {
+//                if let votePrice2 = Int(votePrice!) {
+//                    voteFee = voteNum2 * votePrice2
+//                    fee.text = String(voteFee!)
+//                }
+//            }
+//        }
+        return true
+    }
+    
+    //设置输入框输入长度，限制输入非阿拉伯数字
+    func textFieldVariety(_ maxlenght:Int ,_ textField: UITextField,_ range: NSRange,_ string: String) -> Bool{
+        let futureString: NSMutableString = NSMutableString(string: textField.text!)
+        futureString.insert(string, at: range.location)
+        var bool:Bool = true
+        if (futureString.length > maxlenght ){
+            bool = false
+        }
+        for i in (0...(futureString.length - 1)).reversed() {//反向循环
+            let char = Character(UnicodeScalar(futureString.character(at: i))!)
+            if(char >= "0" && char <= "9") != true {//限制只能输入数字
+                bool = false
+            }
+            if(futureString.length == 1 && char == "0"){//第一个数字不能为零
+               bool = false
+            }
         }
         
         if voteNum != nil, votePrice != nil {
@@ -90,7 +138,8 @@ class PutMainTableController: UITableViewController, UITextFieldDelegate {
                 }
             }
         }
-        return true
+        
+        return bool
     }
     
 //    func textFieldDidEndEditing(_ textField: UITextField) {
@@ -133,6 +182,8 @@ class PutMainTableController: UITableViewController, UITextFieldDelegate {
             dest.voteFee = voteFee
             dest.voteLength = Int(voteLength!)
             dest.voteDays = Int(voteDays!)
+            dest.voteName = String(voteName!)
+            
         }
     }
     
@@ -143,7 +194,7 @@ class PutMainTableController: UITableViewController, UITextFieldDelegate {
         let ac = UIAlertController(title: "投票未保存", message: "", preferredStyle: .alert)
         let option1 = UIAlertAction(title: "保存", style: .default, handler: nil)
         let option2 = UIAlertAction(title: "不，谢谢", style: .cancel) { (_) in
-            self.dismiss(animated: true, completion: nil)
+                self.performSegue(withIdentifier: "backToFirst", sender: self)
         }
         ac.addAction(option1)
         ac.addAction(option2)
