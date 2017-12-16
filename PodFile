@@ -1,5 +1,5 @@
 use_frameworks!
 target 'Vote' do
-    pod ''
-    pod ''
+   pod 'Alamofire', '~> 4.5'
+   pod 'SwiftyJSON'
 end
