@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Alamofire
 
 class LoginTableViewController: UITableViewController,UITextFieldDelegate {
 
@@ -124,11 +125,17 @@ class LoginTableViewController: UITableViewController,UITextFieldDelegate {
         let m1 = n1.length == 11 ? true:false //手机号设置长度
         if !phone.isEqual("") && m1 == true{
             if( resend == true){
-                
-                // 启动倒计时
-                isCounting = true
-                resend = false
-                alert("已发送")
+                let parameters:Dictionary = ["phone":phone, "type":"login"]
+                let headers: HTTPHeaders = ["Accept": "application/json"]
+                Alamofire.request("https://www.bingowo.com/api/index.php/sms/get_code", method: .get, parameters: parameters, encoding: URLEncoding.default, headers: headers).responseJSON{ response in
+                    print("result==\(response.result)")
+                    if response.result.isSuccess == true {
+                        // 启动倒计时
+                        self.isCounting = true
+                        self.resend = false
+                        self.alert("已发送")
+                    }
+                }
             }
         } else {
             
@@ -196,8 +203,15 @@ class LoginTableViewController: UITableViewController,UITextFieldDelegate {
         
         if !phone.isEqual("") && !code.isEqual("") && m1 == true && m2 == true {
             
-            //再此提交数据
-            alert("添加成功")
+            //在此提交数据
+            let parameters:Dictionary = ["phone":phone, "code":code]
+            let headers: HTTPHeaders = ["Accept": "application/json"]
+            Alamofire.request("https://www.bingowo.com/api/index.php/login/denglu", method: .post, parameters: parameters, encoding: URLEncoding.default, headers: headers).responseJSON{ response in
+                if response.result.isSuccess == true{
+                    self.alert("登录成功")
+                }
+            }
+            
             
         }else{
             if phone.isEqual(""){
