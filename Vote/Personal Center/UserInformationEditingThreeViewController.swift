@@ -21,13 +21,24 @@ class UserInformationEditingThreeViewController: UIViewController, UIPickerViewD
     
     var array = ["00后","90后","80后","70后","60后","50后","40后","30后","20后"]
     var array2 = ["男","女"]
-    
+    var bustarray = [String]()//胸围
+    var heightarray = [String]()//身高
+    var bodyweightarray = [String]()//体重
+    var Educationarray = ["博士后","博士研究生","硕士研究生","本科","专科","高中","初中","小学","其它"]
     
     var munbertype:Int = 0 //监听是从哪个选项进入
     var selectText = "" //获取跳转前内容用于设置初始值及监听内容变化
     var savetext:String?//用于存储
     var index = 0 // 用于设置初始值
     
+    
+    func arraynumber( _ number:Int,unit:String) -> Array<Any> {
+        var array = [String]()
+        for i in 0..<number{
+            array.append("\(i)\(unit)")
+        }
+        return array
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -40,7 +51,12 @@ class UserInformationEditingThreeViewController: UIViewController, UIPickerViewD
         pickerView.delegate = self
         
         print(munbertype)
-        //munbertype 3.性别 5.年龄
+        
+        bustarray = arraynumber(200, unit: "CM") as! [String]//胸围数据
+        bodyweightarray = arraynumber(300, unit: "KG") as! [String]//体重数据
+        heightarray = arraynumber(250, unit: "CM") as! [String] //身高数据
+        
+        //munbertype 1.头像 2.昵称 3.性别 4.年龄 5.签名 6.行业 7.公司 8.家乡 9.爱好 10.姓名 11.胸围  12.体重 13.身高  14.学历  15.院校  16.专业
         //循环匹配获取对应下标（设置选择框的默认值）/设置标题
         if(munbertype == 3){
                titletext.text = "性别"
@@ -56,6 +72,34 @@ class UserInformationEditingThreeViewController: UIViewController, UIPickerViewD
                         index = i
                     }
                 }
+        }else if(munbertype == 11){
+            titletext.text = "胸围"
+            for i in 0..<bustarray.count{
+                if(selectText == bustarray[i]){
+                    index = i
+                }
+            }
+        }else if(munbertype == 12){
+            titletext.text = "体重"
+            for i in 0..<bodyweightarray.count{
+                if(selectText == bodyweightarray[i]){
+                    index = i
+                }
+            }
+        }else if(munbertype == 13){
+            titletext.text = "身高"
+            for i in 0..<heightarray.count{
+                if(selectText == heightarray[i]){
+                    index = i
+                }
+            }
+        } else if(munbertype == 14){
+            titletext.text = "学历"
+            for i in 0..<Educationarray.count{
+                if(selectText == Educationarray[i]){
+                    index = i
+                }
+            }
         }
         print(index)
         //设置初始值
@@ -122,6 +166,14 @@ class UserInformationEditingThreeViewController: UIViewController, UIPickerViewD
             int = array2.count
         } else if(munbertype == 4){
             int = array.count
+        } else if(munbertype == 11){
+            int = bustarray.count
+        }else if(munbertype == 12){
+            int = bodyweightarray.count
+        }else if(munbertype == 13){
+            int = heightarray.count
+        } else if(munbertype == 14){
+           int = Educationarray.count
         }
         return int
     }
@@ -134,6 +186,14 @@ class UserInformationEditingThreeViewController: UIViewController, UIPickerViewD
             text = self.array2[row]
         } else if(munbertype == 4){
             text = self.array[row]
+        }else if(munbertype == 11){
+            text = self.bustarray[row]
+        }else if(munbertype == 12){
+           text = self.bodyweightarray[row]
+        }else if(munbertype == 13){
+           text = self.heightarray[row]
+        } else if(munbertype == 14){
+           text = self.Educationarray[row]
         }
         return text
     }
@@ -145,6 +205,14 @@ class UserInformationEditingThreeViewController: UIViewController, UIPickerViewD
             selectText = self.array2[row]
         } else if(munbertype == 4){
             selectText = self.array[row]
+        }else if(munbertype == 11){
+            selectText = self.bustarray[row]
+        }else if(munbertype == 12){
+            selectText = self.bodyweightarray[row]
+        }else if(munbertype == 13){
+            selectText = self.heightarray[row]
+        } else if(munbertype == 14){
+            selectText = self.Educationarray[row]
         }
         print(selectText)
     }
@@ -168,6 +236,13 @@ class UserInformationEditingThreeViewController: UIViewController, UIPickerViewD
                 savetext = self.array2[pickerView.selectedRow(inComponent: 0)]
             } else if(munbertype == 4){
                 savetext = self.array[pickerView.selectedRow(inComponent: 0)]
+            }else if(munbertype == 11){
+                savetext = self.bustarray[pickerView.selectedRow(inComponent: 0)]
+            }else if(munbertype == 12){
+                savetext = self.bodyweightarray[pickerView.selectedRow(inComponent: 0)]
+            }else if(munbertype == 13){
+                savetext = self.heightarray[pickerView.selectedRow(inComponent: 0)]
+                savetext = self.Educationarray[pickerView.selectedRow(inComponent: 0)]
             }
         }
     

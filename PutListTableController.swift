@@ -10,13 +10,14 @@ import UIKit
 
 class PutListTableController: UITableViewController, UITextFieldDelegate {
 
-    var voteAnswer: String?
-    var voteNum: Int?
-    var votePrice: Int?
-    var voteFee: Int?
-    var voteLength: Int?
-    var voteDays: Int?
-    var voteName: String?
+    var voteAnswer: String?//接收谁来回答
+    var voteNum: Int32?//接收问卷数量
+    var QuestionnaireLength:Int32?//选题数量
+    var unitprice:Double?//接收选题单价
+    var voteDays: Int32?//接收周期
+    var voteunitprice:Double?//接收问卷单价
+    var voteFee: Double?//接收发布总价
+    var voteName: String?//接收问卷标题
     
     @IBOutlet weak var votetitle: UILabel!//问卷标题
     
@@ -36,14 +37,17 @@ class PutListTableController: UITableViewController, UITextFieldDelegate {
         super.viewDidLoad()
         
         self.title = "编辑问卷"
-        self.votetitle.text = "\(voteName!)"
-        print(voteAnswer!)
-        print(voteNum!)
-        print(votePrice!)
-        print(voteFee!)
-        print(voteLength!)
-        print(voteDays!)
-        
+        if voteName != nil {
+             self.votetitle.text = "\(voteName!)"
+//                print("接收谁来回答",voteAnswer!)
+//                print("问卷数量",voteNum!)
+//                print("选题数量",QuestionnaireLength!)
+//                print("选题单价",unitprice!)
+//                print("周期",voteDays!)
+//                print("问卷单价",voteunitprice!)
+//                print("发布总价",voteFee!)
+        }
+       
         tableView.separatorColor = UIColor(white: 1, alpha: 0)
         self.clearsSelectionOnViewWillAppear = false
 
@@ -109,13 +113,10 @@ class PutListTableController: UITableViewController, UITextFieldDelegate {
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
 
     // MARK: - Table view data source
-
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
         return contant.count
     }
 
@@ -153,51 +154,6 @@ class PutListTableController: UITableViewController, UITextFieldDelegate {
         
         
     }
-
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
-    }
-    */
-
-    /*
-    // Override to support editing the table view.
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            // Delete the row from the data source
-            tableView.deleteRows(at: [indexPath], with: .fade)
-        } else if editingStyle == .insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
-    }
-    */
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-
-    }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
     //MARK：actions
     func createTextFiled(_ obj: UITableViewCell) -> UITextField {

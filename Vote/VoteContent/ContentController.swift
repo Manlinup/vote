@@ -29,6 +29,7 @@ class ContentController: UIViewController {
     var selected = ""
     var listCount = 0
     var vcControl: VoteContentController!
+    var type = "0"
     
     //MARK: Actions
     override func viewDidLoad() {
@@ -41,7 +42,7 @@ class ContentController: UIViewController {
         voteNum.text = "共\(listCount)题"
         voteSort.text = "第\(index + 1)题"
         
-        let voteTitlteSelectedtext = "\(index + 1) \(titleSelected)"//标题内容
+        let voteTitlteSelectedtext = "\(index + 1) \(titleSelected)"//题目标题内容
         //一下为设置题目行高并添加内容
         let lineheight = NSMutableParagraphStyle()
         lineheight.lineSpacing = 10
@@ -68,12 +69,19 @@ class ContentController: UIViewController {
     var selectedcolor = UIColor.init(red: 75/255, green: 166/255, blue: 103/255, alpha: 1.0)//常规颜色
     
     @IBAction func selcetbtn(_ sender: UIButton) {//选择按钮
-        
-        if isBtnSelected {
-            return
+        if type == "1"{//单选
+            if isBtnSelected {
+                return
+            }
+            isBtnSelected = true
+            sender.backgroundColor = selectedcolor //选中颜色
+            sender.isSelected = true
         }
-        isBtnSelected = true
-        sender.backgroundColor = selectedcolor //选中颜色
+        if type == "2"{//多选
+            sender.backgroundColor = selectedcolor //选中颜色
+            sender.isSelected = true
+        }
+        
             if (index + 1) == listCount {
                 alert2("最后一题了,请点击保存")
             }
@@ -99,9 +107,6 @@ class ContentController: UIViewController {
         let op = UIAlertAction(title: "分享到微信", style:.default, handler: nil)
         let op2 = UIAlertAction(title: "分享到QQ", style:.default, handler: nil)
         let op3 = UIAlertAction(title: "返回", style: .cancel) { (_) in
-            //self.vcControl.close()
-//            self.performSegue(withIdentifier: "backToMain", sender: self)
-            
               self.performSegue(withIdentifier: "unwindToMain", sender: self)
         }
         action.addAction(op)

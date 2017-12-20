@@ -39,6 +39,15 @@
 		4C767A251FD6869F0026387A /* UserInformationEditingThreeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C767A241FD6869F0026387A /* UserInformationEditingThreeViewController.swift */; };
 		4C768D801FD808A800A53447 /* UserDefaultsName.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C768D7F1FD808A800A53447 /* UserDefaultsName.swift */; };
 		4C768D821FD9253A00A53447 /* EditUserInformationTwoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C768D811FD9253A00A53447 /* EditUserInformationTwoTableViewCell.swift */; };
+		4CA04A4D1FE8E4D900ECEDE4 /* MyDraftTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CA04A4C1FE8E4D900ECEDE4 /* MyDraftTableViewCell.swift */; };
+		4CA04A4F1FE8E4EE00ECEDE4 /* MyDraftTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CA04A4E1FE8E4EE00ECEDE4 /* MyDraftTableViewController.swift */; };
+		4CA04A511FE9FDD400ECEDE4 /* SetTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CA04A501FE9FDD400ECEDE4 /* SetTableViewController.swift */; };
+		4CA04A5F1FEA5BA100ECEDE4 /* SurveyTarget01TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CA04A5E1FEA5BA100ECEDE4 /* SurveyTarget01TableViewController.swift */; };
+		4CA04A611FEA5BB100ECEDE4 /* SurveyTarget01TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CA04A601FEA5BB100ECEDE4 /* SurveyTarget01TableViewCell.swift */; };
+		4CA04A631FEA5BC700ECEDE4 /* SurveyTarget02TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CA04A621FEA5BC700ECEDE4 /* SurveyTarget02TableViewController.swift */; };
+		4CA04A651FEA5BD900ECEDE4 /* SurveyTarget02TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CA04A641FEA5BD900ECEDE4 /* SurveyTarget02TableViewCell.swift */; };
+		4CA04A671FEA5C0800ECEDE4 /* SurveyTarget03TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CA04A661FEA5C0800ECEDE4 /* SurveyTarget03TableViewController.swift */; };
+		4CA04A691FEA5C1600ECEDE4 /* SurveyTarget03TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CA04A681FEA5C1600ECEDE4 /* SurveyTarget03TableViewCell.swift */; };
 		4CC6D40C1FCCF8FF009B7F02 /* PersonalCenterTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CC6D40B1FCCF8FF009B7F02 /* PersonalCenterTableViewController.swift */; };
 		4CC6D40E1FCD0D78009B7F02 /* AccountTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CC6D40D1FCD0D78009B7F02 /* AccountTableViewController.swift */; };
 		4CC6D4101FCD1331009B7F02 /* WithdrawTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CC6D40F1FCD1331009B7F02 /* WithdrawTableViewController.swift */; };
@@ -106,6 +115,15 @@
 		4C767A241FD6869F0026387A /* UserInformationEditingThreeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInformationEditingThreeViewController.swift; sourceTree = "<group>"; };
 		4C768D7F1FD808A800A53447 /* UserDefaultsName.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsName.swift; sourceTree = "<group>"; };
 		4C768D811FD9253A00A53447 /* EditUserInformationTwoTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditUserInformationTwoTableViewCell.swift; sourceTree = "<group>"; };
+		4CA04A4C1FE8E4D900ECEDE4 /* MyDraftTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyDraftTableViewCell.swift; sourceTree = "<group>"; };
+		4CA04A4E1FE8E4EE00ECEDE4 /* MyDraftTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyDraftTableViewController.swift; sourceTree = "<group>"; };
+		4CA04A501FE9FDD400ECEDE4 /* SetTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetTableViewController.swift; sourceTree = "<group>"; };
+		4CA04A5E1FEA5BA100ECEDE4 /* SurveyTarget01TableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SurveyTarget01TableViewController.swift; sourceTree = "<group>"; };
+		4CA04A601FEA5BB100ECEDE4 /* SurveyTarget01TableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SurveyTarget01TableViewCell.swift; sourceTree = "<group>"; };
+		4CA04A621FEA5BC700ECEDE4 /* SurveyTarget02TableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SurveyTarget02TableViewController.swift; sourceTree = "<group>"; };
+		4CA04A641FEA5BD900ECEDE4 /* SurveyTarget02TableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SurveyTarget02TableViewCell.swift; sourceTree = "<group>"; };
+		4CA04A661FEA5C0800ECEDE4 /* SurveyTarget03TableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SurveyTarget03TableViewController.swift; sourceTree = "<group>"; };
+		4CA04A681FEA5C1600ECEDE4 /* SurveyTarget03TableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SurveyTarget03TableViewCell.swift; sourceTree = "<group>"; };
 		4CC6D40B1FCCF8FF009B7F02 /* PersonalCenterTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalCenterTableViewController.swift; sourceTree = "<group>"; };
 		4CC6D40D1FCD0D78009B7F02 /* AccountTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountTableViewController.swift; sourceTree = "<group>"; };
 		4CC6D40F1FCD1331009B7F02 /* WithdrawTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WithdrawTableViewController.swift; sourceTree = "<group>"; };
@@ -153,6 +171,12 @@
 				4C2DF3891FE22FD600190472 /* MultipleChoiceTableViewController.swift */,
 				27C77B8A1FC2AB0500F807EF /* PutFirstViewController.swift */,
 				2736666E1FC3CCAF004D77B4 /* SelectedTypeController.swift */,
+				4CA04A5E1FEA5BA100ECEDE4 /* SurveyTarget01TableViewController.swift */,
+				4CA04A601FEA5BB100ECEDE4 /* SurveyTarget01TableViewCell.swift */,
+				4CA04A621FEA5BC700ECEDE4 /* SurveyTarget02TableViewController.swift */,
+				4CA04A641FEA5BD900ECEDE4 /* SurveyTarget02TableViewCell.swift */,
+				4CA04A661FEA5C0800ECEDE4 /* SurveyTarget03TableViewController.swift */,
+				4CA04A681FEA5C1600ECEDE4 /* SurveyTarget03TableViewCell.swift */,
 			);
 			name = Put;
 			path = ..;
@@ -255,6 +279,7 @@
 				4CC6D4111FCD3232009B7F02 /* RechargeTableViewController.swift */,
 				4CC6D4171FCD5554009B7F02 /* QuestionnaireDetailsTableViewController.swift */,
 				4C37CC761FCD6FF50085FDAB /* EditUserPhotoTableViewController.swift */,
+				4CA04A501FE9FDD400ECEDE4 /* SetTableViewController.swift */,
 				4C5CA8E71FCEB1260033F3E4 /* EditUserInterestTableViewController.swift */,
 				4C767A241FD6869F0026387A /* UserInformationEditingThreeViewController.swift */,
 				4C31C99D1FDDA53B00179BDE /* LoginTableViewController.swift */,
@@ -265,6 +290,8 @@
 				4C5CA8EF1FCEB4B30033F3E4 /* EditUserInformationTwoTableViewController.swift */,
 				4C5CA8F11FCEB61D0033F3E4 /* EditUserInformationOneViewController.swift */,
 				4C31C99B1FDD575000179BDE /* AddBankCardTableViewController.swift */,
+				4CA04A4C1FE8E4D900ECEDE4 /* MyDraftTableViewCell.swift */,
+				4CA04A4E1FE8E4EE00ECEDE4 /* MyDraftTableViewController.swift */,
 			);
 			path = "Personal Center";
 			sourceTree = "<group>";
@@ -473,10 +500,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				4C5CA8E81FCEB1260033F3E4 /* EditUserInterestTableViewController.swift in Sources */,
+				4CA04A4D1FE8E4D900ECEDE4 /* MyDraftTableViewCell.swift in Sources */,
+				4CA04A651FEA5BD900ECEDE4 /* SurveyTarget02TableViewCell.swift in Sources */,
 				27720E591FBC1EB400FAE613 /* PutListTableController.swift in Sources */,
 				4C31C99E1FDDA53B00179BDE /* LoginTableViewController.swift in Sources */,
+				4CA04A691FEA5C1600ECEDE4 /* SurveyTarget03TableViewCell.swift in Sources */,
 				279F66ED1FBAE7FA008E66A3 /* ContentController.swift in Sources */,
 				4CC6D4141FCD3F31009B7F02 /* QuestionnaireTableViewController.swift in Sources */,
+				4CA04A4F1FE8E4EE00ECEDE4 /* MyDraftTableViewController.swift in Sources */,
 				4CC6D40E1FCD0D78009B7F02 /* AccountTableViewController.swift in Sources */,
 				2736666F1FC3CCAF004D77B4 /* SelectedTypeController.swift in Sources */,
 				279F66F31FBAE7FA008E66A3 /* Vote.xcdatamodeld in Sources */,
@@ -487,10 +518,12 @@
 				4CC6D4101FCD1331009B7F02 /* WithdrawTableViewController.swift in Sources */,
 				279F66EB1FBAE7FA008E66A3 /* AppDelegate.swift in Sources */,
 				4C37CC751FCD6D3A0085FDAB /* UserInformationEditingTableViewController.swift in Sources */,
+				4CA04A631FEA5BC700ECEDE4 /* SurveyTarget02TableViewController.swift in Sources */,
 				27ADA35C1FBE88110083ACCA /* NavigationTableView.swift in Sources */,
 				4C767A251FD6869F0026387A /* UserInformationEditingThreeViewController.swift in Sources */,
 				27C77B8B1FC2AB0500F807EF /* PutFirstViewController.swift in Sources */,
 				4C34F7111FE1037E007F8F57 /* EditQuestionnaireNameViewController.swift in Sources */,
+				4CA04A611FEA5BB100ECEDE4 /* SurveyTarget01TableViewCell.swift in Sources */,
 				4C768D821FD9253A00A53447 /* EditUserInformationTwoTableViewCell.swift in Sources */,
 				4C31C99C1FDD575000179BDE /* AddBankCardTableViewController.swift in Sources */,
 				279F671E1FBAE862008E66A3 /* VoteListsCell.swift in Sources */,
@@ -498,8 +531,11 @@
 				4C4C99381FDD1ED90097704E /* BankCardTableViewController.swift in Sources */,
 				4C4C993A1FDD22550097704E /* BankCardTableViewCell.swift in Sources */,
 				4C5CA8F21FCEB61D0033F3E4 /* EditUserInformationOneViewController.swift in Sources */,
+				4CA04A671FEA5C0800ECEDE4 /* SurveyTarget03TableViewController.swift in Sources */,
 				4CC6D4121FCD3232009B7F02 /* RechargeTableViewController.swift in Sources */,
+				4CA04A511FE9FDD400ECEDE4 /* SetTableViewController.swift in Sources */,
 				4CC6D4161FCD431A009B7F02 /* QuestionnaireTableViewCell.swift in Sources */,
+				4CA04A5F1FEA5BA100ECEDE4 /* SurveyTarget01TableViewController.swift in Sources */,
 				279F67241FBAEDFC008E66A3 /* VoteContentController.swift in Sources */,
 				27ADA3581FBE86330083ACCA /* MainViewController.swift in Sources */,
 				4C768D801FD808A800A53447 /* UserDefaultsName.swift in Sources */,
@@ -673,11 +709,11 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 42AJ9MEY78;
+				DEVELOPMENT_TEAM = XD349479M7;
 				INFOPLIST_FILE = Vote/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = hmx.vote;
+				PRODUCT_BUNDLE_IDENTIFIER = hmx21.vote;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -691,11 +727,11 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 42AJ9MEY78;
+				DEVELOPMENT_TEAM = XD349479M7;
 				INFOPLIST_FILE = Vote/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = hmx.vote;
+				PRODUCT_BUNDLE_IDENTIFIER = hmx21.vote;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";

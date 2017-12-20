@@ -17,6 +17,13 @@ class UserInformationEditingTableViewController: UITableViewController {
     @IBOutlet weak var yeartext: UILabel!//年龄
     @IBOutlet weak var industrytext: UILabel!//行业
     @IBOutlet weak var hometowntext: UILabel! //家乡
+    @IBOutlet weak var reallyname: UILabel!//姓名
+    @IBOutlet weak var busttext: UILabel!//胸围
+    @IBOutlet weak var bodyweight: UILabel!//体重
+    @IBOutlet weak var heighttext: UILabel! //身高
+    @IBOutlet weak var educationtext: UILabel!//学历
+    @IBOutlet weak var institutionstext: UILabel!//院校
+    @IBOutlet weak var professiontext: UILabel!//专业
     
     let udname = UserDefaultsKey.personalinformation()//获取UserDefaults名称
     override func viewDidLoad() {
@@ -32,7 +39,7 @@ class UserInformationEditingTableViewController: UITableViewController {
     var munbertype:Int = 0 //用于监听页面跳转
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {//单元格选中事件
         tableView.deselectRow(at: indexPath, animated: true)//点击完成取消行高亮
-        ///print("你点几了",indexPath.section,"组",indexPath.row,"行")
+        print("你点几了",indexPath.section,"组",indexPath.row,"行")
         
         
         if(indexPath.section == 0){
@@ -87,7 +94,7 @@ class UserInformationEditingTableViewController: UITableViewController {
             default: break
                 
             }
-        }else{
+        } else if(indexPath.section == 2){
             switch(indexPath.row)
             {
             case 0:
@@ -102,10 +109,55 @@ class UserInformationEditingTableViewController: UITableViewController {
                 break
             default:break
             }
-         }
+        }  else if(indexPath.section == 3){
+            switch(indexPath.row)
+            {
+            case 0:
+                //姓名
+                munbertype = 10
+                 performSegue(withIdentifier: "UserInformationEditingOneLink", sender:self )
+                break
+            case 1:
+                //胸围
+                munbertype = 11
+                performSegue(withIdentifier: "UserInformationEditingThreeLink", sender:self )
+                break
+            case 2:
+                //体重
+                munbertype = 12
+                performSegue(withIdentifier: "UserInformationEditingThreeLink", sender:self )
+                break
+            case 3:
+                //身高
+                munbertype = 13
+                performSegue(withIdentifier: "UserInformationEditingThreeLink", sender:self )
+                break
+            default:break
+            }
+        } else if(indexPath.section == 4){
+            switch(indexPath.row)
+            {
+            case 0:
+                //学历
+                munbertype = 14
+                performSegue(withIdentifier: "UserInformationEditingThreeLink", sender:self )
+                break
+            case 1:
+                //院校
+                munbertype = 15
+                 performSegue(withIdentifier: "UserInformationEditingOneLink", sender:self )
+                break
+            case 2:
+                //专业
+                munbertype = 16
+                 performSegue(withIdentifier: "UserInformationEditingOneLink", sender:self )
+                break
+            default:break
+            }
+        }
         
         print("跳转前",munbertype)
-        //munbertype 1.头像 2.昵称 3.性别 4.年龄 5.签名 6.行业 7.公司 8.家乡 9.爱好
+        //munbertype 1.头像 2.昵称 3.性别 4.年龄 5.签名 6.行业 7.公司 8.家乡 9.爱好 10.姓名 11.胸围  12.体重 13.身高  14.学历  15.院校  16.专业
         //保存数据到本地
         let defaults = UserDefaults.standard
         defaults.set(munbertype, forKey: udname.munbertype)
@@ -119,9 +171,13 @@ class UserInformationEditingTableViewController: UITableViewController {
             defaults.setValue(industrytext.text!, forKey: udname.homeindustry)
         }else if (munbertype == 8){
             defaults.setValue(hometowntext.text!, forKey: udname.homeindustry)
+        } else if (munbertype == 10){
+            defaults.setValue(reallyname.text!, forKey: udname.inputtext)
+        } else if (munbertype == 15){
+            defaults.setValue(institutionstext.text!, forKey: udname.inputtext)
+        } else if (munbertype == 16){
+            defaults.setValue(professiontext.text!, forKey: udname.inputtext)
         }
-        
-        
         
     }
     override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {//表格与表格之间的颜色
@@ -130,25 +186,7 @@ class UserInformationEditingTableViewController: UITableViewController {
         return headerView
     }
 
-    
-
-//    func mod(){//性别/年龄转场
-//        let viewController=storyboard?.instantiateViewController(withIdentifier: "userinformationpk") as! UserInformationEditingThreeViewController
-//        viewController.munbertype = munbertype
-//        if(munbertype == 3){
-//            viewController.selectText = gendertext.text!
-//        }else if(munbertype == 4){
-//            viewController.selectText = yeartext.text!
-//        }
-//        viewController.view.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.5)
-//        viewController.modalPresentationStyle = .custom
-//        self.present(viewController, animated: true, completion: nil)
-//
-//    }
-
     // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
         if segue.identifier == "UserInformationEditingThreeLink"{
@@ -158,16 +196,23 @@ class UserInformationEditingTableViewController: UITableViewController {
                 info.selectText = gendertext.text!
             }else if(munbertype == 4){
                 info.selectText = yeartext.text!
+            }else if (munbertype == 11){
+                info.selectText = busttext.text!
+            } else if (munbertype == 12){
+                info.selectText = bodyweight.text!
+            } else if (munbertype == 13){
+                info.selectText = heighttext.text!
+            } else if (munbertype == 14){
+                info.selectText = educationtext.text!
             }
            info.view.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.5)
-            info.modalPresentationStyle = .custom
-            
+           info.modalPresentationStyle = .custom
         }
 
     }
     
     @IBAction func closeudituserinformation(segue:UIStoryboardSegue){//用户信息编辑返向转场
-        //munbertype 1.头像 2.昵称 3.性别 4.年龄 5.签名 6.行业 7.公司 8.家乡 9.爱好
+        //munbertype 1.头像 2.昵称 3.性别 4.年龄 5.签名 6.行业 7.公司 8.家乡 9.爱好 10.姓名 11.胸围  12.体重 13.身高  14.学历  15.院校  16.专业
         if segue.identifier == "closeEditUserOne"{
             let info1 = segue.source as! EditUserInformationOneViewController
             if let contanttext = info1.savetext{
@@ -177,6 +222,12 @@ class UserInformationEditingTableViewController: UITableViewController {
                     signaturetext.text = contanttext
                 }else if(info1.munbertype == 7){//公司
                     companytext.text = contanttext
+                }else if(info1.munbertype == 10){//姓名
+                     reallyname.text = contanttext
+                } else if(info1.munbertype == 15){//院校
+                    institutionstext.text = contanttext
+                }else if(info1.munbertype == 16){//专业
+                    professiontext.text = contanttext
                 }
             }
         }
@@ -198,11 +249,33 @@ class UserInformationEditingTableViewController: UITableViewController {
                     gendertext.text = selectText
                 }else if(info.munbertype == 4){//年龄
                     yeartext.text = selectText
+                }else if (munbertype == 11){//胸围
+                    busttext.text = selectText
+                } else if (munbertype == 12){//体重
+                    bodyweight.text = selectText
+                } else if (munbertype == 13){//升高
+                    heighttext.text = selectText
+                } else if (munbertype == 14){//学历
+                    educationtext.text = selectText
                 }
             }
             
         }
     }
+    
+    //    func mod(){//性别/年龄转场
+    //        let viewController=storyboard?.instantiateViewController(withIdentifier: "userinformationpk") as! UserInformationEditingThreeViewController
+    //        viewController.munbertype = munbertype
+    //        if(munbertype == 3){
+    //            viewController.selectText = gendertext.text!
+    //        }else if(munbertype == 4){
+    //            viewController.selectText = yeartext.text!
+    //        }
+    //        viewController.view.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.5)
+    //        viewController.modalPresentationStyle = .custom
+    //        self.present(viewController, animated: true, completion: nil)
+    //
+    //    }
 
 
 }

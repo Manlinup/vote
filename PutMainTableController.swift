@@ -10,20 +10,19 @@ import UIKit
 
 class PutMainTableController: UITableViewController, UITextFieldDelegate {
 
-    @IBOutlet weak var answer: UITextField!
-    @IBOutlet weak var num: UITextField!
-    @IBOutlet weak var price: UITextField!
-    @IBOutlet weak var fee: UILabel!
-    @IBOutlet weak var length: UITextField!
-    @IBOutlet weak var days: UITextField!
+    @IBOutlet weak var answer: UITextField!//谁来回答
+    @IBOutlet weak var num: UITextField!//问卷数量
+    @IBOutlet weak var price: UITextField!//选题数目
+    @IBOutlet weak var fee: UITextField!//发布总价
+    @IBOutlet weak var unitprice: UITextField!//选题单价
+    @IBOutlet weak var length: UITextField!//问卷单价
+    @IBOutlet weak var days: UITextField!//调查周期
     
-    var voteAnswer: String?
-    var voteNum: String?
-    var votePrice: String?
-    var voteFee: Int?
-    var voteLength: String?
-    var voteDays: String?
-    var voteName: String?
+    var voteNum: String?//问卷数量监听
+    var votePrice: String?//选题数目监听
+    var voteunitprice: String?//选题单价监听
+    var voteLength: String?//问卷单价监听
+    var voteName: String?//接收标题
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,6 +32,7 @@ class PutMainTableController: UITableViewController, UITextFieldDelegate {
         price.delegate = self
         length.delegate = self
         days.delegate = self
+        unitprice.delegate = self
          view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(handTap)))
         tableView.separatorColor = UIColor(white: 1, alpha: 0)
         
@@ -44,7 +44,7 @@ class PutMainTableController: UITableViewController, UITextFieldDelegate {
         price.setValue(placeholdercolor, forKeyPath: "placeholderLabel.textColor")//设置placeholder颜色
         length.setValue(placeholdercolor, forKeyPath: "placeholderLabel.textColor")//设置placeholder颜色
         days.setValue(placeholdercolor, forKeyPath: "placeholderLabel.textColor")//设置placeholder颜色
-        
+        unitprice.setValue(placeholdercolor, forKeyPath: "placeholderLabel.textColor")//设置placeholder颜色
         
         self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action:nil)//导航返回按钮样式
     }
@@ -57,6 +57,7 @@ class PutMainTableController: UITableViewController, UITextFieldDelegate {
             price.resignFirstResponder()
             length.resignFirstResponder()
             days.resignFirstResponder()
+            unitprice.resignFirstResponder()
         }
         sender.cancelsTouchesInView = false
     }
@@ -71,6 +72,15 @@ class PutMainTableController: UITableViewController, UITextFieldDelegate {
             textField.returnKeyType = .done
         }
         
+        switch textField {//谁来回答/禁止问卷单价/发布总价编辑
+        case self.answer:
+            return false
+        case self.length:
+            return false
+        case self.fee:
+            return false
+        default:break
+        }
         return true
     }
 
@@ -81,34 +91,21 @@ class PutMainTableController: UITableViewController, UITextFieldDelegate {
 
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange,
                    replacementString string: String) -> Bool {
-        let currentText = textField.text ?? ""
-        let newText = (currentText as NSString).replacingCharacters(in: range, with: string)
+//        let currentText = textField.text ?? ""
+//        let newText = (currentText as NSString).replacingCharacters(in: range, with: string)
+        Calculatetheprice(textField,range,string)//计算价格
         switch textField {
-        case answer:
-            voteAnswer = newText
-        case num:
-            voteNum = newText//样本数量
+        case num://问卷数量
             return textFieldVariety(9,textField,range,string)//限制长度，非数字输入
-        case price:
-            votePrice = newText//样本单价
+        case price://选题数目
+            return textFieldVariety(3,textField,range,string)//限制长度，非数字输入
+        case unitprice://选题单价
             return textFieldVariety(4,textField,range,string)//限制长度，非数字输入
-        case length:
-            voteLength = newText//样本长度
-            return textFieldVariety(4,textField,range,string)//限制长度，非数字输入
-        case days:
-            voteDays = newText//样本周期
-             return textFieldVariety(4,textField,range,string)//限制长度，非数字输入
+        case days://选题周期
+             return textFieldVariety(3,textField,range,string)//限制长度，非数字输入
         default:
             break
         }
-//        if voteNum != nil, votePrice != nil {
-//            if let voteNum2 = Int(voteNum!) {
-//                if let votePrice2 = Int(votePrice!) {
-//                    voteFee = voteNum2 * votePrice2
-//                    fee.text = String(voteFee!)
-//                }
-//            }
-//        }
         return true
     }
     
@@ -129,37 +126,39 @@ class PutMainTableController: UITableViewController, UITextFieldDelegate {
                bool = false
             }
         }
-        
-        if voteNum != nil, votePrice != nil {
-            if let voteNum2 = Int(voteNum!) {
-                if let votePrice2 = Int(votePrice!) {
-                    voteFee = voteNum2 * votePrice2
-                    fee.text = String(voteFee!)
-                }
-            }
-        }
-        
         return bool
     }
     
-//    func textFieldDidEndEditing(_ textField: UITextField) {
-//        voteAnswer = answer.text
-//        voteNum = num.text!
-//        votePrice = price.text!
-//        voteLength = length.text
-//        voteDays = days.text
-//
-//        if let voteNum2 = Int(voteNum!) {
-//            print(voteNum2)
-//            if let votePrice2 = Int(votePrice!) {
-//                print(votePrice2)
-//                voteFee = voteNum2 * votePrice2
-//                fee.text = String(voteFee!)
-//                print(fee)
-//            }
-//        }
-//    }
+    func Calculatetheprice(_ textField: UITextField,_ range: NSRange,_ string: String){//计算价格
+        let futureString: NSMutableString = NSMutableString(string: textField.text!)
+        futureString.insert(string, at: range.location)
+        switch  textField {
+        case self.num://问卷数量
+            voteNum = futureString.trimmingCharacters(in: .whitespaces)//获取问卷数量
+        case self.price://选题数量
+            votePrice = futureString.trimmingCharacters(in: .whitespaces)//获取选题数量
+        case self.unitprice://选题单价
+            voteunitprice = futureString.trimmingCharacters(in: .whitespaces)///获取选题单价
+        case self.length://问卷单价
+            voteLength = futureString.trimmingCharacters(in: .whitespaces)///获取问卷单价
+        default:break
+        }
+        if votePrice != nil && voteunitprice != nil  {//如果选题数量和单价不为nil
+            let n1:Double = (votePrice! as NSString).doubleValue//选题数量类型转换
+            let n2:Double = (voteunitprice! as NSString).doubleValue//选题单价类型转换
+            let n3:Double = n1 * n2 //计算问卷单价
+            self.length.text = "\(n3)"//赋予单价
+            voteLength = "\(n3)"
+            if(voteNum != nil && voteLength != nil ){//如果问卷数量和问卷单价不为nil
+                let n4:Double = (voteNum! as NSString).doubleValue//问卷数量类型转换
+                self.fee.text = "\(n3*n4)"//计算发布总价
+            }
+         }
+    }
     
+    @IBAction func surveytarget(_ sender: UIButton) {//跳转谁来回答
+         performSegue(withIdentifier: "SurveyTargetLink", sender:self)
+    }
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
     }
@@ -173,50 +172,91 @@ class PutMainTableController: UITableViewController, UITextFieldDelegate {
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "showPutList" {
-            let dest = segue.destination as! PutListTableController
-            dest.voteAnswer = voteAnswer
-            dest.voteNum = Int(voteNum!)
-            dest.votePrice = Int(votePrice!)
-            dest.voteFee = voteFee
-            dest.voteLength = Int(voteLength!)
-            dest.voteDays = Int(voteDays!)
-            dest.voteName = String(voteName!)
-            
+ 
+    //MARK：Actions
+    /*
+     answer: UITextField!//谁来回答
+     num: UITextField!//问卷数量
+     price: UITextField!//选题数目
+     fee: UITextField!//发布总价
+     unitprice: UITextField!//选题单价
+     length: UITextField!//问卷单价
+     days: UITextField!//调查周期
+     */
+    //以下变量用于转场传值
+    var c1:String?//谁来回答
+    var c2:Int32?//问卷数量
+    var c3:Int32?//选题数目
+    var c4:Double?//选题单价
+    var c5:Int32?//调查周期
+    var c6:Double?//问卷单价
+    var c7:Double?//发布总价
+    //传递数据到添加问题页面，并保证所有数据都已经填写完整。
+    @IBAction func addQuestion(_ sender: UIButton) {
+        let m1 = answer.text!.trimmingCharacters(in: .whitespaces)//谁来回答
+        let m2 = num.text!.trimmingCharacters(in: .whitespaces)//问卷数量
+        let m3 = price.text!.trimmingCharacters(in: .whitespaces)//选题数目
+        let m4 = unitprice.text!.trimmingCharacters(in: .whitespaces)//选题单价
+        let m5 = days.text!.trimmingCharacters(in: .whitespaces)//调查周期
+        let m6 = length.text!.trimmingCharacters(in: .whitespaces)//问卷单价
+        let m7 = fee.text!.trimmingCharacters(in: .whitespaces)//发布总价
+        if !m1.isEqual("") && !m2.isEqual("") && !m3.isEqual("") && !m4.isEqual("") && !m5.isEqual("") && !m6.isEqual("") && !m7.isEqual(""){
+                c1 = m1
+                c2 = (m2 as NSString).intValue
+                c3 = (m3 as NSString).intValue
+                c4 = (m4 as NSString).doubleValue
+                c5 = (m5 as NSString).intValue
+                c6 = (m6 as NSString).doubleValue
+                c7 = (m7 as NSString).doubleValue
+                let d1:Int32 = c2!
+                let d2:Int32 = c3!
+                let d3:Double = c4!
+                let d4:Int32 = c5!
+                let d5:Double = c6!
+                let d6:Double = c7!
+            if(d1 >= 0 && d2 >= 0 && d3 >= 0.0 && d4 >= 0 && d5 >= 0.0 && d6 >= 0.0){//判断所有的值是否都是正数
+                 self.performSegue(withIdentifier: "showPutList", sender: self)
+            } else {
+                alert("未知错误")
+            }
+        } else {
+           alert("填写信息不完整")
         }
     }
-    
-
-    //MARK：Actions
-    
-    @IBAction func backBtn(_ sender: UIBarButtonItem) {
-        let ac = UIAlertController(title: "投票未保存", message: "", preferredStyle: .alert)
-        let option1 = UIAlertAction(title: "保存", style: .default, handler: nil)
-        let option2 = UIAlertAction(title: "不，谢谢", style: .cancel) { (_) in
-                self.performSegue(withIdentifier: "backToFirst", sender: self)
-        }
+    func alert( _ title:String){
+        let ac = UIAlertController(title: title, message: "", preferredStyle: .alert)
+        let option1 = UIAlertAction(title: "确定", style: .destructive, handler: nil)
         ac.addAction(option1)
-        ac.addAction(option2)
         self.present(ac, animated: true, completion: nil)
     }
     
-    //传递数据到添加问题页面，并保证所有数据都已经填写完整。
-    @IBAction func addQuestion(_ sender: UIButton) {
-        voteAnswer = voteAnswer?.trimmingCharacters(in: .whitespaces)
-        voteNum = voteNum?.trimmingCharacters(in: .whitespaces)
-        votePrice = votePrice?.trimmingCharacters(in: .whitespaces)
-        voteLength = voteLength?.trimmingCharacters(in: .whitespaces)
-        voteDays = voteDays?.trimmingCharacters(in: .whitespaces)
-        if voteAnswer != nil, voteNum != nil, votePrice != nil, voteFee != nil, voteLength != nil, voteDays != nil,voteAnswer != "", voteNum != "", votePrice != "", voteLength != "", voteDays != "" {
-            self.performSegue(withIdentifier: "showPutList", sender: self)
-        } else {
-            let ac = UIAlertController(title: "信息填写不完整", message: "", preferredStyle: .alert)
-            let option1 = UIAlertAction(title: "确定", style: .destructive, handler: nil)
-            ac.addAction(option1)
-            self.present(ac, animated: true, completion: nil)
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "showPutList" {
+            let dest = segue.destination as! PutListTableController
+                dest.voteAnswer = c1! //谁来回答
+                dest.voteNum = c2!//问卷数量
+                dest.QuestionnaireLength = c3! //选题数量
+                dest.unitprice = c4! //选题单价
+                dest.voteDays = c5!//周期
+                dest.voteunitprice = c6! //问卷单价
+                dest.voteFee = c7! //发布总价
+                dest.voteName = String(voteName!)//问卷标题
+        }
+       
+    }
+    //SurveyTargetLink
+    @IBAction func closeSurveyTarget(segue:UIStoryboardSegue){
+       
+        if segue.identifier == "closeSurveyTargetlast" {
+            let info = segue.source as! SurveyTarget03TableViewController
+            if let dest = info.saveText {
+                answer.text = dest
+            }
+            
         }
     }
+   
+
     
     
 }

@@ -13,6 +13,7 @@ class VoteContentController: UIPageViewController, UIPageViewControllerDataSourc
     //MARK: Propeties
     var listsTitle = ["发生火灾要及时报警，报警电话是?发生火灾要及时报警，报警电话是?发生火灾要及时报警，报警电话是?", "发生火灾要及时报警，报警电话是?", "发生火灾要及时报警，报警电话是?", "发生火灾要及时报警，报警电话是?"]
     var listsAnswer = ["A.免费翻译服务可提供简体中文和另外 100 多种语言之间的互译功能", "A 110   B 119   C 120", "A 110   B 119   C 120", "A 110   B 119"]
+     var type = ["1", "2", "1", "2"]
     var voteTitlte = ""
     
     var index = 0
@@ -41,6 +42,7 @@ class VoteContentController: UIPageViewController, UIPageViewControllerDataSourc
                 contentVc.index = atIndex
                 contentVc.titleSelected = listsTitle[atIndex]
                 contentVc.selected = listsAnswer[atIndex]
+                contentVc.type = type[atIndex]
                 contentVc.listCount = listsTitle.count
                 contentVc.titleTop = voteTitlte
                 return contentVc

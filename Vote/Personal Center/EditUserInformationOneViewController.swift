@@ -20,7 +20,7 @@ class EditUserInformationOneViewController: UIViewController,UITextFieldDelegate
     override func viewDidLoad() {
         super.viewDidLoad()
         let defalts = UserDefaults.standard
-        //munbertype监听是那个栏目进来的  2.昵称  5.签名 7.公司
+        //munbertype监听是那个栏目进来的  1.头像 2.昵称 3.性别 4.年龄 5.签名 6.行业 7.公司 8.家乡 9.爱好 10.姓名 11.胸围  12.体重 13.身高  14.学历  15.院校  16.专业
         munbertype = defalts.integer(forKey:udname.munbertype)
         //获取已有内容赋予输入框
         initializationtext = defalts.string(forKey:udname.inputtext)!
@@ -32,6 +32,12 @@ class EditUserInformationOneViewController: UIViewController,UITextFieldDelegate
             self.title = "编辑签名"
         }else if(munbertype == 7){
             self.title = "编辑公司"
+        } else if(munbertype == 10){
+            self.title = "编辑真实姓名"
+        } else if(munbertype == 15){
+            self.title = "编辑院校"
+        } else if(munbertype == 16){
+            self.title = "编辑专业"
         }
         
         input.delegate = self
@@ -58,6 +64,11 @@ class EditUserInformationOneViewController: UIViewController,UITextFieldDelegate
                 return false
             }
         }
+        if !futureString.isEqual(to: "") && munbertype == 10 {//限制姓名长度
+            if(futureString.length > 11){//设置最大数额
+                return false
+            }
+        }
         //输入框变动获取其值
         let currentText = textField.text ?? ""
         let newText = (currentText as NSString).replacingCharacters(in: range, with: string)
@@ -70,14 +81,26 @@ class EditUserInformationOneViewController: UIViewController,UITextFieldDelegate
     @IBAction func save(_ sender: UIBarButtonItem) {//存储数据
         let inputcontant = input.text!
         if(inputcontant.isEqual("") == false && inputcontant != initializationtext && contanttext.isEqual("") == false ){
+            
             if(munbertype == 2){//昵称
                 savetext = contanttext
+                performSegue(withIdentifier: "closeEditUserOne", sender:self)//转场
             }else if (munbertype == 5){//签名
                 savetext = contanttext
+                performSegue(withIdentifier: "closeEditUserOne", sender:self)//转场
             }else if(munbertype == 7){//公司
                savetext = contanttext
+               performSegue(withIdentifier: "closeEditUserOne", sender:self)//转场
+            } else if(munbertype == 10){
+               savetext = contanttext
+                performSegue(withIdentifier: "closeEditUserOne", sender:self)//转场
+            } else if(munbertype == 15){
+                savetext = contanttext
+                performSegue(withIdentifier: "closeEditUserOne", sender:self)//转场
+            } else if(munbertype == 16){
+                savetext = contanttext
+                performSegue(withIdentifier: "closeEditUserOne", sender:self)//转场
             }
-            performSegue(withIdentifier: "closeEditUserOne", sender:self)//转场
             
         }else if(inputcontant.isEqual("") == true){
             alert("没有内容可提交")

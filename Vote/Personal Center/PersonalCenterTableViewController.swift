@@ -20,7 +20,7 @@ class PersonalCenterTableViewController: UITableViewController {
     @IBOutlet weak var stackview2: UIStackView!
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        Login()//跳转登录页面
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
         self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)//导航返回按钮样式
         tableView.backgroundColor = UIColor.white//(white: 0.98, alpha: 1)//表格背景颜色
@@ -85,7 +85,7 @@ class PersonalCenterTableViewController: UITableViewController {
     }
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(true)
-        Login()//跳转登录页面
+        //Login()//跳转登录页面
     }
     
     @IBAction func AccountLink(_ sender: UIButton) {//跳转账户
@@ -103,13 +103,35 @@ class PersonalCenterTableViewController: UITableViewController {
          performSegue(withIdentifier: "UserInformationEditingLink", sender:self )
     }
     
-
+    @IBAction func MyDraftLink(_ sender: UIButton) {//跳转我的草稿
+        performSegue(withIdentifier: "MyDraftLink", sender: self)
+    }
+    
+    
+    @IBAction func myvote(_ sender: UIButton) {//我的投票
+        alert("努力建设中...")
+    }
+    
+    
+    
+    @IBAction func setLink(_ sender: UIBarButtonItem) {//跳转到设置
+        performSegue(withIdentifier: "setLink", sender: self)
+    }
+    
+    
     func Login(){//登录页面
                 let LoginViewController = storyboard?.instantiateViewController(withIdentifier: "LoginviewController") as! LoginTableViewController
                     self.present(LoginViewController, animated: true, completion: nil)
             }
     
-    
+    func alert(_ alerttext:String){
+        //弹框
+        let munt = UIAlertController(title:alerttext, message: nil, preferredStyle: .alert)
+        self.present(munt, animated: true, completion: nil)
+        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 1){//设置弹框显示时间
+            self.presentedViewController?.dismiss(animated: false, completion: nil)
+        }
+    }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
