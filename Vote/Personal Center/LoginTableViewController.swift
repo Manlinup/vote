@@ -128,12 +128,29 @@ class LoginTableViewController: UITableViewController,UITextFieldDelegate {
                 let parameters:Dictionary = ["phone":phone, "type":"login"]
                 let headers: HTTPHeaders = ["Accept": "application/json"]
                 Alamofire.request("https://www.bingowo.com/api/index.php/sms/get_code", method: .get, parameters: parameters, encoding: URLEncoding.default, headers: headers).responseJSON{ response in
+<<<<<<< HEAD
                     print("result==\(response.result)")
                     if response.result.isSuccess == true {
                         // 启动倒计时
                         self.isCounting = true
                         self.resend = false
                         self.alert("已发送")
+=======
+                    switch response.result {
+                    case .success(let json):
+                        let dict = json as! Dictionary<String,AnyObject>
+                        let origin = dict["status"] as! Int
+                        if origin == 0 {
+                            self.alert("\(dict["msg"] as! String)")
+                        } else {
+                            // 启动倒计时
+                            self.isCounting = true
+                            self.resend = false
+                            self.alert("已发送")
+                        }
+                    case.failure(let error):
+                        print("\(error)")
+>>>>>>> c092225ccde271d69c74ecb43f8f6e2e1056a40e
                     }
                 }
             }
@@ -202,7 +219,11 @@ class LoginTableViewController: UITableViewController,UITextFieldDelegate {
         
         
         if !phone.isEqual("") && !code.isEqual("") && m1 == true && m2 == true {
+<<<<<<< HEAD
 
+=======
+            
+>>>>>>> c092225ccde271d69c74ecb43f8f6e2e1056a40e
             //在此提交数据
             let parameters:Dictionary = ["phone":phone, "code":code]
             let headers: HTTPHeaders = ["Accept": "application/json"]
@@ -216,13 +237,19 @@ class LoginTableViewController: UITableViewController,UITextFieldDelegate {
                         self.alert("\(dict["msg"] as! String)")
                     } else if origin == 1 {
                         self.alert("登录成功")
+<<<<<<< HEAD
                         self.performSegue(withIdentifier: "closelogin", sender: self)
+=======
+>>>>>>> c092225ccde271d69c74ecb43f8f6e2e1056a40e
                     }
                 case .failure(let error):
                     print("\(error)")
                 }
             }
+<<<<<<< HEAD
             
+=======
+>>>>>>> c092225ccde271d69c74ecb43f8f6e2e1056a40e
         }else{
             if phone.isEqual(""){
                 alert("请填手机号码")
