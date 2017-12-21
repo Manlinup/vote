@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import Alamofire
+import SwiftyJSON
 
 class VoteContentController: UIPageViewController, UIPageViewControllerDataSource {
     
@@ -19,6 +21,30 @@ class VoteContentController: UIPageViewController, UIPageViewControllerDataSourc
     var index = 0
     var currentPage: Int = 0
     
+    //从首页传递一个question_id。每个问卷都有一个相应的id
+    var question_id = 0
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated);
+        let parameters:Dictionary = ["question_id":question_id]
+        let headers: HTTPHeaders = ["Accept": "application/json"]
+        Alamofire.request("https://www.bingowo.com/api/index.php/article/question", method: .get, parameters: parameters, encoding: URLEncoding.default, headers: headers).responseJSON { response in
+            
+            switch response.result.isSuccess {
+            case true:
+                if let value = response.result.value {
+                    let json = JSON(value)
+                    print(json["data"][0]["title"])
+                    for (key,value) in json["data"]["content"].enumerated() {
+                        
+                    }
+                }
+            case false:
+                print(response.result.error ?? "")
+            }
+            
+        }
+    }
     
     //MARK: Action
     func pageViewController(_ pageViewController: UIPageViewController, viewControllerBefore viewController: UIViewController) -> UIViewController? {

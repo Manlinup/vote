@@ -128,14 +128,13 @@ class LoginTableViewController: UITableViewController,UITextFieldDelegate {
                 let parameters:Dictionary = ["phone":phone, "type":"login"]
                 let headers: HTTPHeaders = ["Accept": "application/json"]
                 Alamofire.request("https://www.bingowo.com/api/index.php/sms/get_code", method: .get, parameters: parameters, encoding: URLEncoding.default, headers: headers).responseJSON{ response in
-<<<<<<< HEAD
-                    print("result==\(response.result)")
+
                     if response.result.isSuccess == true {
                         // 启动倒计时
                         self.isCounting = true
                         self.resend = false
                         self.alert("已发送")
-=======
+
                     switch response.result {
                     case .success(let json):
                         let dict = json as! Dictionary<String,AnyObject>
@@ -150,7 +149,7 @@ class LoginTableViewController: UITableViewController,UITextFieldDelegate {
                         }
                     case.failure(let error):
                         print("\(error)")
->>>>>>> c092225ccde271d69c74ecb43f8f6e2e1056a40e
+
                     }
                 }
             }
@@ -167,7 +166,7 @@ class LoginTableViewController: UITableViewController,UITextFieldDelegate {
             
         }
     }
-
+    }
     var countdownTimer: Timer?
     var remainingSeconds: Int = 0 {
         willSet {//当remainingSeconds发生改变触发//newValue为改变的值
@@ -219,11 +218,6 @@ class LoginTableViewController: UITableViewController,UITextFieldDelegate {
         
         
         if !phone.isEqual("") && !code.isEqual("") && m1 == true && m2 == true {
-<<<<<<< HEAD
-
-=======
-            
->>>>>>> c092225ccde271d69c74ecb43f8f6e2e1056a40e
             //在此提交数据
             let parameters:Dictionary = ["phone":phone, "code":code]
             let headers: HTTPHeaders = ["Accept": "application/json"]
@@ -237,19 +231,14 @@ class LoginTableViewController: UITableViewController,UITextFieldDelegate {
                         self.alert("\(dict["msg"] as! String)")
                     } else if origin == 1 {
                         self.alert("登录成功")
-<<<<<<< HEAD
                         self.performSegue(withIdentifier: "closelogin", sender: self)
-=======
->>>>>>> c092225ccde271d69c74ecb43f8f6e2e1056a40e
+
                     }
                 case .failure(let error):
                     print("\(error)")
                 }
             }
-<<<<<<< HEAD
-            
-=======
->>>>>>> c092225ccde271d69c74ecb43f8f6e2e1056a40e
+
         }else{
             if phone.isEqual(""){
                 alert("请填手机号码")
@@ -280,78 +269,5 @@ class LoginTableViewController: UITableViewController,UITextFieldDelegate {
             self.presentedViewController?.dismiss(animated: false, completion: nil)
         }
     }
-    
-   /*
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-
-    // MARK: - Table view data source
-
-    override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 0
-    }
-
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        return 0
-    }
-
- 
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
-
-        // Configure the cell...
-
-        return cell
-    }
-    */
-
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
-    }
-    */
-
-    /*
-    // Override to support editing the table view.
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            // Delete the row from the data source
-            tableView.deleteRows(at: [indexPath], with: .fade)
-        } else if editingStyle == .insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
-    }
-    */
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-
-    }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }

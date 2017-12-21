@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import Alamofire
+import SwiftyJSON
 
 class UserInformationEditingTableViewController: UITableViewController {
 
@@ -33,6 +35,23 @@ class UserInformationEditingTableViewController: UITableViewController {
         tableView.separatorStyle = UITableViewCellSeparatorStyle.singleLine//分割线样式
         tableView.separatorColor = UIColor.init(red: 92/255, green: 94/255, blue: 102/255, alpha: 1.0)//表格分割线颜色
         self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)//导航返回按钮样式
+        
+        let headers: HTTPHeaders = ["Accept": "application/json"]
+        Alamofire.request("https://www.bingowo.com/api/index.php/account/home", method: .get, parameters: nil, encoding: URLEncoding.default, headers: headers).responseJSON { response in
+            
+            switch response.result.isSuccess {
+            case true:
+                if let value = response.result.value {
+                    let json = JSON(value)
+                    let info = json["data"]["info"]
+                    print(info)
+
+                }
+            case false:
+                print(response.result.error ?? "")
+            }
+            
+        }
         
     }
  
