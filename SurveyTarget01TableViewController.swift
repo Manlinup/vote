@@ -10,7 +10,7 @@ import UIKit
 
 class SurveyTarget01TableViewController: UITableViewController {
     
-    var  object01 = ["哈哈01","哈哈02","哈哈03","哈哈04","哈哈05","哈哈06"]
+    var  object01: Array<String>!
 
     override func viewDidLoad() {
         super.viewDidLoad()

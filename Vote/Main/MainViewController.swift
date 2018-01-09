@@ -33,9 +33,6 @@ class MainViewController: UIViewController, UIPageViewControllerDataSource {
             lastPage = currentPage
         }
     }
-//    override var preferredStatusBarStyle:UIStatusBarStyle {//无导航条情况下设置状态栏
-//        return .lightContent
-//    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -102,8 +99,6 @@ class MainViewController: UIViewController, UIPageViewControllerDataSource {
     }
     
     @IBAction func closelogin(segue:UIStoryboardSegue){//登录返场
-        
-        print("到达主界面")
         
     }
     /*

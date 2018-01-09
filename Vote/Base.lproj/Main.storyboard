@@ -5397,6 +5397,10 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="currentlocation" destination="keg-BB-l84" id="a4F-5r-ufk"/>
+                        <outlet property="selected" destination="kap-Gj-4BQ" id="TU2-hH-Zjn"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="M2j-KW-OwM" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="tmd-Sq-T2n" userLabel="Exit" sceneMemberID="exit"/>

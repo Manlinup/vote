@@ -12,7 +12,7 @@ class SurveyTarget02TableViewController: UITableViewController {
 
     
     var selectText = ""
-    var  object01 = ["哈哈001","哈哈002","哈哈003","哈哈004","哈哈005","哈哈006"]
+    var  object01: Array<String>!
     
     override func viewDidLoad() {
         super.viewDidLoad()

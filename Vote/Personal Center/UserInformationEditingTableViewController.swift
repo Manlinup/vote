@@ -4,7 +4,7 @@
 //
 //  Created by mc on 2017/11/28.
 //  Copyright © 2017年 林以达. All rights reserved.
-//
+
 
 import UIKit
 import Alamofire
@@ -59,8 +59,6 @@ class UserInformationEditingTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {//单元格选中事件
         tableView.deselectRow(at: indexPath, animated: true)//点击完成取消行高亮
         print("你点几了",indexPath.section,"组",indexPath.row,"行")
-        
-        
         if(indexPath.section == 0){
             
             switch(indexPath.row)
