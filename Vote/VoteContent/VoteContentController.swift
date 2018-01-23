@@ -23,6 +23,7 @@ class VoteContentController: UIPageViewController, UIPageViewControllerDataSourc
     
     var arraycontant = [Array<Any>]()//用于接收数据
     
+    var contentArray = Array<XYDVoteContentModel>()
     
     //从首页传递一个question_id。每个问卷都有一个相应的id
     var question_id = 1
@@ -43,19 +44,39 @@ class VoteContentController: UIPageViewController, UIPageViewControllerDataSourc
             switch response.result.isSuccess {
             case true:
                 if let value = response.result.value {
-                    let json = JSON(value)
-                    print("获取到",json["data"]["content"])
-                    for (key,value) in json["data"]["content"].enumerated() {
-                        var voteData = [json["data"]["content"][key][0].string]
-                        
-                        //print(voteData)
-                        print("111")
-                        
-                        array.append(voteData)
-                    }
+//                    var json = JSON(value)
+//                    print(json)
                     
-            
-                    print(array)
+                    //JSON Data
+                    guard let data = try? JSONSerialization.data(withJSONObject: value, options: .prettyPrinted) else { return }
+                    let str = String(data:data, encoding: String.Encoding.utf8)
+                    print(str)
+                    
+                    //JSON String
+//                    if var testJson = try? JSONSerialization.jsonObject(with: data, options: .allowFragments) as! [String : Any] {
+//                        print("jsonDic:",testJson)
+                    let testJson = try? JSONSerialization.jsonObject(with: data, options: .allowFragments)
+                    if let jsonDict = testJson as? NSDictionary {
+                        if let data_1 = jsonDict["data"] as? NSDictionary {
+                            if let content = data_1["content"] as? NSArray {
+                                var contentArray = Array<XYDVoteContentModel>()
+                                for i in 0..<content.count {
+                                    let strArray = content[i] as! NSArray
+                                    let contentInfo: XYDVoteContentModel = XYDVoteContentModel()
+                                    contentInfo.title = strArray[0] as? String
+                                    contentInfo.type = strArray[1] as? String
+                                    var answersArray = Array<String>()
+                                    for j in 2..<strArray.count {
+                                        let answer = strArray[j] as! String
+                                        answersArray.append(answer)
+                                    }
+                                    contentInfo.answers = answersArray
+                                    contentArray.append(contentInfo)
+                                }
+                                self.contentArray = contentArray
+                            }
+                        }
+                    }
                     
                    self.reloadUI(array)//赋值函数
                 }
@@ -95,6 +116,9 @@ class VoteContentController: UIPageViewController, UIPageViewControllerDataSourc
                 contentVc.type = type[atIndex]
                 contentVc.listCount = listsTitle.count
                 contentVc.titleTop = voteTitlte
+                
+                contentVc.contentArray = self.contentArray
+                
                 return contentVc
             }
         }
@@ -130,7 +154,9 @@ class VoteContentController: UIPageViewController, UIPageViewControllerDataSourc
         dataSource = self
         
         navigationItem.title = voteTitlte
-        
+        self.listsTitle = ["标题1", "标题2"];
+        self.listsAnswer = ["答案1", "答案2"];
+        self.type = ["type1", "type2"];
         if let startVc = vc(atIndex: 0) {
             setViewControllers([startVc], direction: .forward, animated: true, completion: nil)
         }

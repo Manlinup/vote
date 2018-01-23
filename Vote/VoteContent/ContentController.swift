@@ -31,6 +31,18 @@ class ContentController: UIViewController {
     var vcControl: VoteContentController!
     var type = "0"
     
+    var contentArray: Array<XYDVoteContentModel>? = nil
+
+    var contentInfo: XYDVoteContentModel? {
+        get {
+            return self.contentInfo;
+        }
+        set {
+            voteTitle.text = contentInfo?.title;
+        }
+    }
+    
+    
     //MARK: Actions
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -39,16 +51,16 @@ class ContentController: UIViewController {
         //bgView.layer.shadowOffset = CGSize(width: 10, height: 10)
         //bgView.layer.shadowPath
        
-        voteNum.text = "共\(listCount)题"
+        voteNum.text = "共\(self.contentArray?.count ?? 0)题"
         voteSort.text = "第\(index + 1)题"
-        
-        let voteTitlteSelectedtext = "\(index + 1) \(titleSelected)"//题目标题内容
-        //一下为设置题目行高并添加内容
-        let lineheight = NSMutableParagraphStyle()
-        lineheight.lineSpacing = 10
-        let attributes = [NSAttributedStringKey.paragraphStyle: lineheight]
-        voteTitlteSelected.attributedText = NSAttributedString(string:"\(voteTitlteSelectedtext)", attributes: attributes)
-       // voteTitlteSelected.text = "\(index + 1) \(titleSelected)"
+        if self.contentArray != nil {
+            let voteTitlteSelectedtext = "\(index + 1) \("默认")"//题目标题内容
+            //一下为设置题目行高并添加内容
+            let lineheight = NSMutableParagraphStyle()
+            lineheight.lineSpacing = 10
+            let attributes = [NSAttributedStringKey.paragraphStyle: lineheight]
+            voteTitlteSelected.attributedText = NSAttributedString(string:"\(voteTitlteSelectedtext)", attributes: attributes)
+        }
         
         selcetA.text = selected
         

@@ -55,6 +55,7 @@
 		4CC6D4141FCD3F31009B7F02 /* QuestionnaireTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CC6D4131FCD3F31009B7F02 /* QuestionnaireTableViewController.swift */; };
 		4CC6D4161FCD431A009B7F02 /* QuestionnaireTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CC6D4151FCD431A009B7F02 /* QuestionnaireTableViewCell.swift */; };
 		4CC6D4181FCD5554009B7F02 /* QuestionnaireDetailsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CC6D4171FCD5554009B7F02 /* QuestionnaireDetailsTableViewController.swift */; };
+		663A3A812015CECD0094EB75 /* XYDVoteContentModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 663A3A802015CECD0094EB75 /* XYDVoteContentModel.swift */; };
 		80767D65B7A2D697186D98F4 /* Pods_Vote.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C6014F02B74E8EEC95EAC650 /* Pods_Vote.framework */; };
 /* End PBXBuildFile section */
 
@@ -131,6 +132,7 @@
 		4CC6D4131FCD3F31009B7F02 /* QuestionnaireTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionnaireTableViewController.swift; sourceTree = "<group>"; };
 		4CC6D4151FCD431A009B7F02 /* QuestionnaireTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionnaireTableViewCell.swift; sourceTree = "<group>"; };
 		4CC6D4171FCD5554009B7F02 /* QuestionnaireDetailsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionnaireDetailsTableViewController.swift; sourceTree = "<group>"; };
+		663A3A802015CECD0094EB75 /* XYDVoteContentModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XYDVoteContentModel.swift; sourceTree = "<group>"; };
 		6ECD1ACA2433541820D9C1F5 /* Pods-Vote.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Vote.release.xcconfig"; path = "Pods/Target Support Files/Pods-Vote/Pods-Vote.release.xcconfig"; sourceTree = "<group>"; };
 		C6014F02B74E8EEC95EAC650 /* Pods_Vote.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Vote.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -256,6 +258,7 @@
 			children = (
 				279F66EC1FBAE7FA008E66A3 /* ContentController.swift */,
 				279F67231FBAEDFC008E66A3 /* VoteContentController.swift */,
+				663A3A802015CECD0094EB75 /* XYDVoteContentModel.swift */,
 			);
 			path = VoteContent;
 			sourceTree = "<group>";
@@ -538,6 +541,7 @@
 				4CA04A5F1FEA5BA100ECEDE4 /* SurveyTarget01TableViewController.swift in Sources */,
 				279F67241FBAEDFC008E66A3 /* VoteContentController.swift in Sources */,
 				27ADA3581FBE86330083ACCA /* MainViewController.swift in Sources */,
+				663A3A812015CECD0094EB75 /* XYDVoteContentModel.swift in Sources */,
 				4C768D801FD808A800A53447 /* UserDefaultsName.swift in Sources */,
 				4C5CA8F01FCEB4B30033F3E4 /* EditUserInformationTwoTableViewController.swift in Sources */,
 				4CC6D40C1FCCF8FF009B7F02 /* PersonalCenterTableViewController.swift in Sources */,
