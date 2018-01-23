@@ -88,6 +88,19 @@ class VoteContentController: UIPageViewController, UIPageViewControllerDataSourc
     func reloadUI(_ array:Array<Any>) -> Void {//数据请求成功赋值
         arraycontant = array as! Array
         view.setNeedsLayout()//刷新页面
+        
+        //    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+        //    [manager GET:@"https://www.bingowo.com/api/index.php/article/question?question_id=1" parameters:nil progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        //        NSData *arrayJson = [NSJSONSerialization dataWithJSONObject:responseObject options:0 error:NULL];
+        //        NSDictionary *dict = [NSJSONSerialization JSONObjectWithData:arrayJson options:0 error:nil];
+        //        NSDictionary *data = dict[@"data"];
+        //        NSArray *content = data[@"content"];
+        //        NSLog(@"%@", content[0]);
+        //
+        //    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        //
+        //    }];
+
     }
     
     
