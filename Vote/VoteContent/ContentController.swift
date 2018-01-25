@@ -74,9 +74,9 @@ class ContentController: UIViewController {
                                         if let optionArray = questionInfo["choose"] as? NSArray {
                                             var options = Array<XYDVoteOptionModel>()
                                             for j in 0..<optionArray.count {
-                                                if let optionInfo = optionArray[j] as? NSDictionary {
+                                                if let optionDict = optionArray[j] as? NSDictionary {
                                                     let optionsInfo: XYDVoteOptionModel = XYDVoteOptionModel();
-                                                    optionsInfo.optionTitle = optionInfo["c_val"] as? String
+                                                    optionsInfo.optionTitle = optionDict["c_val"] as? String
                                                     options.append(optionsInfo)
                                                 }
                                             }
