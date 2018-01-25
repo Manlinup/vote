@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Alamofire
 
 class ContentController: UIViewController {
 
@@ -24,58 +25,112 @@ class ContentController: UIViewController {
     var isBtnSelected = false
     
     var index = 0
-    var titleTop = ""
-    var titleSelected = ""
-    var selected = ""
-    var listCount = 0
-    var vcControl: VoteContentController!
     var type = "0"
-    
-    var contentArray: Array<XYDVoteContentModel>? = nil
+    var vcControl: VoteContentController!
 
-    var contentInfo: XYDVoteContentModel? {
-        get {
-            return self.contentInfo;
-        }
-        set {
-            voteTitle.text = contentInfo?.title;
-        }
-    }
+    var questionArray = Array<XYDVoteContentModel>()
+    
+    //从首页传递一个question_id。每个问卷都有一个相应的id
+    var question_id = 4
     
     
-    //MARK: Actions
+    
+    
+    
+    
+    //Life Cycle
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        //bgView.layer.shadowColor = UIColor.black
-        //bgView.layer.shadowOffset = CGSize(width: 10, height: 10)
-        //bgView.layer.shadowPath
-       
-        voteNum.text = "共\(self.contentArray?.count ?? 0)题"
-        voteSort.text = "第\(index + 1)题"
-        if self.contentArray != nil {
-            let voteTitlteSelectedtext = "\(index + 1) \("默认")"//题目标题内容
-            //一下为设置题目行高并添加内容
+        self.reloadUI()
+    }
+
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        self.fatchedAlldata()
+    }
+    
+    func fatchedAlldata() {//获取数据
+        let parameters:Dictionary = ["question_id":question_id]
+        let headers: HTTPHeaders = ["Accept": "application/json"]
+        Alamofire.request("https://www.bingowo.com/api/index.php/article/question", method: .get, parameters: parameters, encoding: URLEncoding.default, headers: headers).responseJSON { response in
+            
+            switch response.result.isSuccess {
+            case true:
+                if let value = response.result.value {
+                    //JSON Data
+                    guard let data = try? JSONSerialization.data(withJSONObject: value, options: .prettyPrinted) else { return }
+                    let testJson = try? JSONSerialization.jsonObject(with: data, options: .allowFragments)
+                    if let jsonDict = testJson as? NSDictionary {
+                        if let data_1 = jsonDict["data"] as? NSDictionary {
+                            if let content = data_1["content"] as? NSArray {
+                                var contentArray = Array<XYDVoteContentModel>()
+                                for i in 0..<content.count {
+                                    if let questionInfo = content[i] as? NSDictionary {
+                                        let contentInfo: XYDVoteContentModel = XYDVoteContentModel()
+                                        contentInfo.title = questionInfo["title"] as? String
+                                        if let optionArray = questionInfo["choose"] as? NSArray {
+                                            var options = Array<XYDVoteOptionModel>()
+                                            for j in 0..<optionArray.count {
+                                                if let optionInfo = optionArray[j] as? NSDictionary {
+                                                    let optionsInfo: XYDVoteOptionModel = XYDVoteOptionModel();
+                                                    optionsInfo.optionTitle = optionInfo["c_val"] as? String
+                                                    options.append(optionsInfo)
+                                                }
+                                            }
+                                            contentInfo.options = options
+                                        }
+                                        contentArray.append(contentInfo)
+                                    }
+                                }
+                                self.questionArray = contentArray
+                                self.reloadUI()
+                            }
+                        }
+                    }
+                }
+            case false:
+                print(response.result.error ?? "")
+            }
+        }
+    }
+    
+    func reloadUI() {
+        if self.questionArray.count > 0 {
+            let questionInfo = self.questionArray[index]
+            voteNum.text = "共\(self.questionArray.count)题"
+            voteSort.text = "第\(index + 1)题"
+            
             let lineheight = NSMutableParagraphStyle()
             lineheight.lineSpacing = 10
             let attributes = [NSAttributedStringKey.paragraphStyle: lineheight]
-            voteTitlteSelected.attributedText = NSAttributedString(string:"\(voteTitlteSelectedtext)", attributes: attributes)
+            voteTitlteSelected.attributedText = NSAttributedString(string:"\(questionInfo.title ?? "")", attributes: attributes)
+            
+            for i in 0..<questionInfo.options.count {
+                let optionInfo = questionInfo.options[i]
+                if i == 0 {
+                    self.selcetA.text = optionInfo.optionTitle
+                }
+                if i == 1 {
+                    self.selcetB.text = optionInfo.optionTitle
+                }
+                if i == 2 {
+                    self.selcetC.text = optionInfo.optionTitle
+                }
+                if i == 3 {
+                    self.selcetD.text = optionInfo.optionTitle
+                }
+            }
         }
-        
-        selcetA.text = selected
-        
-        voteTitle.text = titleTop
-
-
-        backBtn.isHidden = (index != 3)//当不在做后一道答题时保存按钮隐藏
-        
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
     
+    
+    
+    
+    //Other
 
     var normlcolr = UIColor.init(red: 214/255, green: 215/255, blue: 220/255, alpha: 1.0)//选中颜色
     var selectedcolor = UIColor.init(red: 75/255, green: 166/255, blue: 103/255, alpha: 1.0)//常规颜色
@@ -94,7 +149,7 @@ class ContentController: UIViewController {
             sender.isSelected = true
         }
         
-            if (index + 1) == listCount {
+            if (index + 1) == self.questionArray.count {
                 alert2("最后一题了,请点击保存")
             }
     }

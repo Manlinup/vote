@@ -8,8 +8,13 @@
 
 import UIKit
 
+class XYDVoteOptionModel: NSObject {
+    var optionTitle: String?
+}
+
 class XYDVoteContentModel: NSObject {
     var title: String?
-    var type: String?
-    var answers: Array<String>?
+    var options = Array<XYDVoteOptionModel>()
 }
+
+

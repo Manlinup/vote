@@ -22,69 +22,12 @@ class VoteContentController: UIPageViewController, UIPageViewControllerDataSourc
     
     
     var arraycontant = [Array<Any>]()//用于接收数据
-    
-    var contentArray = Array<XYDVoteContentModel>()
-    
-    //从首页传递一个question_id。每个问卷都有一个相应的id
-    var question_id = 1
-    
+        
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        fatchedAlldata()//获取数据
+    }
         
-    }
-    
-    func fatchedAlldata(){//获取数据
-        var array = [Array<Any>]()
-        let parameters:Dictionary = ["question_id":question_id]
-        let headers: HTTPHeaders = ["Accept": "application/json"]
-        Alamofire.request("https://www.bingowo.com/api/index.php/article/question", method: .get, parameters: parameters, encoding: URLEncoding.default, headers: headers).responseJSON { response in
-            
-            switch response.result.isSuccess {
-            case true:
-                if let value = response.result.value {
-//                    var json = JSON(value)
-//                    print(json)
-                    
-                    //JSON Data
-                    guard let data = try? JSONSerialization.data(withJSONObject: value, options: .prettyPrinted) else { return }
-                    let str = String(data:data, encoding: String.Encoding.utf8)
-                    print(str)
-                    
-                    //JSON String
-//                    if var testJson = try? JSONSerialization.jsonObject(with: data, options: .allowFragments) as! [String : Any] {
-//                        print("jsonDic:",testJson)
-                    let testJson = try? JSONSerialization.jsonObject(with: data, options: .allowFragments)
-                    if let jsonDict = testJson as? NSDictionary {
-                        if let data_1 = jsonDict["data"] as? NSDictionary {
-                            if let content = data_1["content"] as? NSArray {
-                                var contentArray = Array<XYDVoteContentModel>()
-                                for i in 0..<content.count {
-                                    let strArray = content[i] as! NSArray
-                                    let contentInfo: XYDVoteContentModel = XYDVoteContentModel()
-                                    contentInfo.title = strArray[0] as? String
-                                    contentInfo.type = strArray[1] as? String
-                                    var answersArray = Array<String>()
-                                    for j in 2..<strArray.count {
-                                        let answer = strArray[j] as! String
-                                        answersArray.append(answer)
-                                    }
-                                    contentInfo.answers = answersArray
-                                    contentArray.append(contentInfo)
-                                }
-                                self.contentArray = contentArray
-                            }
-                        }
-                    }
-                    
-                   self.reloadUI(array)//赋值函数
-                }
-            case false:
-                print(response.result.error ?? "")
-            }
-        }
-    }
     func reloadUI(_ array:Array<Any>) -> Void {//数据请求成功赋值
         arraycontant = array as! Array
         view.setNeedsLayout()//刷新页面
@@ -102,7 +45,6 @@ class VoteContentController: UIPageViewController, UIPageViewControllerDataSourc
         //    }];
 
     }
-    
     
     //MARK: Action
     func pageViewController(_ pageViewController: UIPageViewController, viewControllerBefore viewController: UIViewController) -> UIViewController? {
@@ -123,15 +65,6 @@ class VoteContentController: UIPageViewController, UIPageViewControllerDataSourc
         
         if case 0..<listsTitle.count = atIndex {
             if let contentVc = storyboard?.instantiateViewController(withIdentifier: "ContentController") as? ContentController {
-                contentVc.index = atIndex
-                contentVc.titleSelected = listsTitle[atIndex]
-                contentVc.selected = listsAnswer[atIndex]
-                contentVc.type = type[atIndex]
-                contentVc.listCount = listsTitle.count
-                contentVc.titleTop = voteTitlte
-                
-                contentVc.contentArray = self.contentArray
-                
                 return contentVc
             }
         }
