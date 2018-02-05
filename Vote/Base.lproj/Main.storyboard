@@ -667,71 +667,11 @@
                                             <constraint firstAttribute="height" constant="0.80000000000000004" id="d5h-PR-F0E"/>
                                         </constraints>
                                     </view>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="P6c-56-wJQ">
-                                        <rect key="frame" x="-3" y="27" width="103.66666666666667" height="5"/>
-                                    </view>
-                                    <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mWN-7z-sc4">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="30"/>
-                                        <subviews>
-                                            <button opaque="NO" tag="101" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Egt-QB-pJr">
-                                                <rect key="frame" x="0.0" y="0.0" width="103.66666666666667" height="30"/>
-                                                <state key="normal" title="热门">
-                                                    <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                </state>
-                                                <connections>
-                                                    <action selector="changeNav:" destination="l6X-PJ-Xiq" eventType="touchUpInside" id="cyK-dh-0af"/>
-                                                </connections>
-                                            </button>
-                                            <button opaque="NO" tag="102" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YZk-L5-BDZ">
-                                                <rect key="frame" x="103.66666666666669" y="0.0" width="103.33333333333331" height="30"/>
-                                                <state key="normal" title="品牌">
-                                                    <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                </state>
-                                                <connections>
-                                                    <action selector="changeNav:" destination="l6X-PJ-Xiq" eventType="touchUpInside" id="WJb-Fg-o9J"/>
-                                                </connections>
-                                            </button>
-                                            <button opaque="NO" tag="103" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FaX-hK-BhJ">
-                                                <rect key="frame" x="206.99999999999997" y="0.0" width="103.66666666666666" height="30"/>
-                                                <state key="normal" title="社会">
-                                                    <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                </state>
-                                                <connections>
-                                                    <action selector="changeNav:" destination="l6X-PJ-Xiq" eventType="touchUpInside" id="WTC-lk-RIT"/>
-                                                </connections>
-                                            </button>
-                                            <button opaque="NO" tag="104" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FpO-Fz-JSh">
-                                                <rect key="frame" x="310.66666666666669" y="0.0" width="103.33333333333331" height="30"/>
-                                                <state key="normal" title="免费">
-                                                    <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                </state>
-                                                <connections>
-                                                    <action selector="changeNav:" destination="l6X-PJ-Xiq" eventType="touchUpInside" id="vk1-zt-4um"/>
-                                                </connections>
-                                            </button>
-                                        </subviews>
-                                        <constraints>
-                                            <constraint firstItem="FaX-hK-BhJ" firstAttribute="width" secondItem="YZk-L5-BDZ" secondAttribute="width" id="F3C-mt-Lil"/>
-                                            <constraint firstItem="YZk-L5-BDZ" firstAttribute="width" secondItem="Egt-QB-pJr" secondAttribute="width" id="Rht-uX-7Bo"/>
-                                            <constraint firstItem="FpO-Fz-JSh" firstAttribute="width" secondItem="FaX-hK-BhJ" secondAttribute="width" id="dXp-t3-mYN"/>
-                                        </constraints>
-                                    </stackView>
                                 </subviews>
                                 <constraints>
-                                    <constraint firstItem="Egt-QB-pJr" firstAttribute="width" secondItem="DDQ-LG-6Ko" secondAttribute="width" multiplier="0.25" id="6ZU-Vw-vAt"/>
                                     <constraint firstAttribute="bottom" secondItem="jeJ-hR-WIl" secondAttribute="bottom" id="9Y0-Od-bPg"/>
-                                    <constraint firstItem="P6c-56-wJQ" firstAttribute="top" secondItem="DDQ-LG-6Ko" secondAttribute="top" constant="27" id="EFi-54-yxq"/>
-                                    <constraint firstItem="mWN-7z-sc4" firstAttribute="height" secondItem="DDQ-LG-6Ko" secondAttribute="height" id="JMw-hh-dJS"/>
-                                    <constraint firstAttribute="bottom" secondItem="P6c-56-wJQ" secondAttribute="bottom" constant="-2" id="KhG-uR-rST"/>
-                                    <constraint firstItem="mWN-7z-sc4" firstAttribute="centerY" secondItem="DDQ-LG-6Ko" secondAttribute="centerY" id="LWX-hK-0Ah"/>
                                     <constraint firstItem="jeJ-hR-WIl" firstAttribute="leading" secondItem="DDQ-LG-6Ko" secondAttribute="leading" id="Mea-Af-tqa"/>
                                     <constraint firstAttribute="height" constant="30" id="NUJ-gU-8MC"/>
-                                    <constraint firstAttribute="trailing" secondItem="mWN-7z-sc4" secondAttribute="trailing" id="OSJ-ro-bgN"/>
-                                    <constraint firstItem="mWN-7z-sc4" firstAttribute="leading" secondItem="DDQ-LG-6Ko" secondAttribute="leading" id="T0B-SP-JcI"/>
-                                    <constraint firstItem="P6c-56-wJQ" firstAttribute="leading" secondItem="DDQ-LG-6Ko" secondAttribute="leading" constant="-3" id="iff-7w-9YR"/>
-                                    <constraint firstItem="P6c-56-wJQ" firstAttribute="width" secondItem="DDQ-LG-6Ko" secondAttribute="width" multiplier="0.25" id="noC-BE-JRx"/>
-                                    <constraint firstItem="mWN-7z-sc4" firstAttribute="width" secondItem="DDQ-LG-6Ko" secondAttribute="width" id="ocj-9e-dLB"/>
-                                    <constraint firstItem="mWN-7z-sc4" firstAttribute="centerX" secondItem="DDQ-LG-6Ko" secondAttribute="centerX" id="r5a-Uh-dpg"/>
                                     <constraint firstAttribute="trailing" secondItem="jeJ-hR-WIl" secondAttribute="trailing" id="rcn-LT-X3X"/>
                                 </constraints>
                             </view>
@@ -767,9 +707,6 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
-                    <connections>
-                        <outlet property="sliderView" destination="P6c-56-wJQ" id="s7L-1Q-DM3"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wgZ-fM-tm5" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
