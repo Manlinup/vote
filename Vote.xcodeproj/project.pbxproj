@@ -55,11 +55,14 @@
 		4CC6D4181FCD5554009B7F02 /* QuestionnaireDetailsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CC6D4171FCD5554009B7F02 /* QuestionnaireDetailsTableViewController.swift */; };
 		663A3A812015CECD0094EB75 /* XYDVoteContentModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 663A3A802015CECD0094EB75 /* XYDVoteContentModel.swift */; };
 		80767D65B7A2D697186D98F4 /* Pods_Vote.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C6014F02B74E8EEC95EAC650 /* Pods_Vote.framework */; };
+		93036890202968C000C8FB55 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9303688F202968C000C8FB55 /* User.swift */; };
+		9303689320296AFF00C8FB55 /* UserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9303689220296AFF00C8FB55 /* UserService.swift */; };
+		9303689520296B3B00C8FB55 /* BaseService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9303689420296B3B00C8FB55 /* BaseService.swift */; };
+		9303689720296E2100C8FB55 /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9303689620296E2100C8FB55 /* NetworkService.swift */; };
 		93586BC620275C0E007F84B1 /* APIDefine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93586BC420275C0E007F84B1 /* APIDefine.swift */; };
 		93586BC720275C0E007F84B1 /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93586BC520275C0E007F84B1 /* Config.swift */; };
 		93586BCB20275C4E007F84B1 /* VHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93586BC920275C4E007F84B1 /* VHelper.swift */; };
 		93586BCC20275C4E007F84B1 /* VLoger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93586BCA20275C4E007F84B1 /* VLoger.swift */; };
-		93586BD120275DE9007F84B1 /* ErrorMsg.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93586BD020275DE9007F84B1 /* ErrorMsg.swift */; };
 		93586BF020276079007F84B1 /* FileManager+VT.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93586BEE20276079007F84B1 /* FileManager+VT.swift */; };
 		93586BF120276079007F84B1 /* Error+VT.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93586BEF20276079007F84B1 /* Error+VT.swift */; };
 		93586BF420276560007F84B1 /* VUserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93586BF320276560007F84B1 /* VUserDefaults.swift */; };
@@ -122,11 +125,14 @@
 		4CC6D4171FCD5554009B7F02 /* QuestionnaireDetailsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionnaireDetailsTableViewController.swift; sourceTree = "<group>"; };
 		663A3A802015CECD0094EB75 /* XYDVoteContentModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XYDVoteContentModel.swift; sourceTree = "<group>"; };
 		6ECD1ACA2433541820D9C1F5 /* Pods-Vote.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Vote.release.xcconfig"; path = "Pods/Target Support Files/Pods-Vote/Pods-Vote.release.xcconfig"; sourceTree = "<group>"; };
+		9303688F202968C000C8FB55 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		9303689220296AFF00C8FB55 /* UserService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserService.swift; sourceTree = "<group>"; };
+		9303689420296B3B00C8FB55 /* BaseService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseService.swift; sourceTree = "<group>"; };
+		9303689620296E2100C8FB55 /* NetworkService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
 		93586BC420275C0E007F84B1 /* APIDefine.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIDefine.swift; sourceTree = "<group>"; };
 		93586BC520275C0E007F84B1 /* Config.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Config.swift; sourceTree = "<group>"; };
 		93586BC920275C4E007F84B1 /* VHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VHelper.swift; sourceTree = "<group>"; };
 		93586BCA20275C4E007F84B1 /* VLoger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VLoger.swift; sourceTree = "<group>"; };
-		93586BD020275DE9007F84B1 /* ErrorMsg.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ErrorMsg.swift; sourceTree = "<group>"; };
 		93586BEE20276079007F84B1 /* FileManager+VT.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "FileManager+VT.swift"; sourceTree = "<group>"; };
 		93586BEF20276079007F84B1 /* Error+VT.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Error+VT.swift"; sourceTree = "<group>"; };
 		93586BF320276560007F84B1 /* VUserDefaults.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VUserDefaults.swift; sourceTree = "<group>"; };
@@ -178,6 +184,7 @@
 				93586BC820275C1D007F84B1 /* Helpers */,
 				93586BCF20275C8E007F84B1 /* Entity */,
 				93586BF520276746007F84B1 /* Views */,
+				9303689120296AE500C8FB55 /* Service */,
 				93586BE320275EA2007F84B1 /* ViewControllers */,
 				93586BEC2027602C007F84B1 /* Resources */,
 				279F66EA1FBAE7FA008E66A3 /* AppDelegate.swift */,
@@ -194,6 +201,16 @@
 				C6014F02B74E8EEC95EAC650 /* Pods_Vote.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		9303689120296AE500C8FB55 /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				9303689420296B3B00C8FB55 /* BaseService.swift */,
+				9303689220296AFF00C8FB55 /* UserService.swift */,
+				9303689620296E2100C8FB55 /* NetworkService.swift */,
+			);
+			path = Service;
 			sourceTree = "<group>";
 		};
 		93586BC320275BF3007F84B1 /* Config */ = {
@@ -218,7 +235,7 @@
 			isa = PBXGroup;
 			children = (
 				663A3A802015CECD0094EB75 /* XYDVoteContentModel.swift */,
-				93586BD020275DE9007F84B1 /* ErrorMsg.swift */,
+				9303688F202968C000C8FB55 /* User.swift */,
 			);
 			path = Entity;
 			sourceTree = "<group>";
@@ -535,6 +552,7 @@
 				2736666F1FC3CCAF004D77B4 /* SelectedTypeController.swift in Sources */,
 				279F66F31FBAE7FA008E66A3 /* Vote.xcdatamodeld in Sources */,
 				4C37CC771FCD6FF50085FDAB /* EditUserPhotoTableViewController.swift in Sources */,
+				9303689320296AFF00C8FB55 /* UserService.swift in Sources */,
 				27C815D41FBD6335009C17DA /* PutListCell.swift in Sources */,
 				27720E571FBC1EA200FAE613 /* PutMainTableController.swift in Sources */,
 				4C2DF38A1FE22FD600190472 /* MultipleChoiceTableViewController.swift in Sources */,
@@ -557,6 +575,7 @@
 				4C31C99C1FDD575000179BDE /* AddBankCardTableViewController.swift in Sources */,
 				279F671E1FBAE862008E66A3 /* VoteListsCell.swift in Sources */,
 				4CC6D4181FCD5554009B7F02 /* QuestionnaireDetailsTableViewController.swift in Sources */,
+				9303689720296E2100C8FB55 /* NetworkService.swift in Sources */,
 				93586BCC20275C4E007F84B1 /* VLoger.swift in Sources */,
 				4C4C99381FDD1ED90097704E /* BankCardTableViewController.swift in Sources */,
 				4C4C993A1FDD22550097704E /* BankCardTableViewCell.swift in Sources */,
@@ -568,13 +587,14 @@
 				93586BFD20277025007F84B1 /* String+VT.swift in Sources */,
 				4CA04A5F1FEA5BA100ECEDE4 /* SurveyTarget01TableViewController.swift in Sources */,
 				279F67241FBAEDFC008E66A3 /* VoteContentController.swift in Sources */,
-				93586BD120275DE9007F84B1 /* ErrorMsg.swift in Sources */,
 				27ADA3581FBE86330083ACCA /* MainViewController.swift in Sources */,
 				663A3A812015CECD0094EB75 /* XYDVoteContentModel.swift in Sources */,
 				93586BF920276E42007F84B1 /* MenuButtonView.swift in Sources */,
 				4C768D801FD808A800A53447 /* UserDefaultsName.swift in Sources */,
 				4C5CA8F01FCEB4B30033F3E4 /* EditUserInformationTwoTableViewController.swift in Sources */,
+				9303689520296B3B00C8FB55 /* BaseService.swift in Sources */,
 				4CC6D40C1FCCF8FF009B7F02 /* PersonalCenterTableViewController.swift in Sources */,
+				93036890202968C000C8FB55 /* User.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

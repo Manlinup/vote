@@ -9,8 +9,22 @@
 import Foundation
 
 private let tokenKey    = "token"
-private let idKey       = "ID"
-private let telKey      = "tel"
+private let avatarKey   = "avatar"
+private let phoneKey    = "phone"
+private let nickKey     = "nick"
+private let remarkKey   = "remark"
+private let genderKey   = "gender"
+private let businessKey = "business"
+private let companyKey  = "company"
+private let countryKey  = "country"
+private let likeKey     = "like"
+private let nameKey     = "name"
+private let bustKey     = "bust"
+private let weightKey   = "weight"
+private let heightKey   = "height"
+private let educationKey = "education"
+private let collegeKey   = "college"
+private let specialtyKey = "specialty"
 
 class VUserDefaults {
     static let defaults = UserDefaults()
@@ -18,12 +32,10 @@ class VUserDefaults {
     // MARK: Clean All Data
     class func cleanAllData() {
         token.removeAllListeners()
-        tel.removeAllListeners()
-        id.removeAllListeners()
+        phone.removeAllListeners()
+        avatar.removeAllListeners()
         
         token.value = nil
-        tel.value = nil
-        id.value = nil
         
         // reset suite
         let dict = defaults.dictionaryRepresentation()
@@ -37,11 +49,11 @@ class VUserDefaults {
     
     // MARK: - props
     
-    static var id: Listenable<String?> = {
-        let id = defaults.string(forKey: idKey)
+    static var avatar: Listenable<String?> = {
+        let avatar = defaults.string(forKey: avatarKey)
         
-        return Listenable<String?>(id) { id in
-            defaults.set(id, forKey: idKey)
+        return Listenable<String?>(avatar) { avatar in
+            defaults.set(avatar, forKey: avatarKey)
         }
     }()
     
@@ -53,11 +65,123 @@ class VUserDefaults {
         }
     }()
     
-    static var tel: Listenable<String?> = {
-        var tel = defaults.string(forKey: telKey)
+    static var phone: Listenable<String?> = {
+        var phone = defaults.string(forKey: phoneKey)
         
-        return Listenable<String?>(tel) { tel in
-            defaults.set(tel, forKey: telKey)
+        return Listenable<String?>(phone) { phone in
+            defaults.set(phone, forKey: phoneKey)
+        }
+    }()
+    
+    static var nick: Listenable<String?> = {
+        var nick = defaults.string(forKey: nickKey)
+        
+        return Listenable<String?>(nick) { nick in
+            defaults.set(nick, forKey: nickKey)
+        }
+    }()
+    
+    static var remark: Listenable<String?> = {
+        var remark = defaults.string(forKey: remarkKey)
+        
+        return Listenable<String?>(remark) { remark in
+            defaults.set(remark, forKey: remarkKey)
+        }
+    }()
+    
+    static var gender: Listenable<String?> = {
+        var gender = defaults.string(forKey: genderKey)
+        
+        return Listenable<String?>(gender) { gender in
+            defaults.set(gender, forKey: genderKey)
+        }
+    }()
+    
+    static var business: Listenable<String?> = {
+        var business = defaults.string(forKey: businessKey)
+        
+        return Listenable<String?>(business) { business in
+            defaults.set(business, forKey: businessKey)
+        }
+    }()
+    
+    static var company: Listenable<String?> = {
+        var company = defaults.string(forKey: companyKey)
+        
+        return Listenable<String?>(company) { company in
+            defaults.set(company, forKey: companyKey)
+        }
+    }()
+    
+    static var country: Listenable<String?> = {
+        var country = defaults.string(forKey: countryKey)
+        
+        return Listenable<String?>(country) { country in
+            defaults.set(country, forKey: countryKey)
+        }
+    }()
+    
+    static var like: Listenable<String?> = {
+        var like = defaults.string(forKey: likeKey)
+        
+        return Listenable<String?>(like) { like in
+            defaults.set(like, forKey: likeKey)
+        }
+    }()
+    
+    static var name: Listenable<String?> = {
+        var name = defaults.string(forKey: nameKey)
+        
+        return Listenable<String?>(name) { name in
+            defaults.set(name, forKey: nameKey)
+        }
+    }()
+    
+    static var bust: Listenable<String?> = {
+        var bust = defaults.string(forKey: bustKey)
+        
+        return Listenable<String?>(bust) { bust in
+            defaults.set(bust, forKey: bustKey)
+        }
+    }()
+    
+    static var weight: Listenable<String?> = {
+        var weight = defaults.string(forKey: weightKey)
+        
+        return Listenable<String?>(weight) { weight in
+            defaults.set(weight, forKey: weightKey)
+        }
+    }()
+    
+    static var height: Listenable<String?> = {
+        var height = defaults.string(forKey: heightKey)
+        
+        return Listenable<String?>(height) { height in
+            defaults.set(height, forKey: heightKey)
+        }
+    }()
+    
+    static var education: Listenable<String?> = {
+        var education = defaults.string(forKey: educationKey)
+        
+        return Listenable<String?>(education) { education in
+            defaults.set(education, forKey: educationKey)
+        }
+    }()
+    
+    static var college: Listenable<String?> = {
+        var college = defaults.string(forKey: collegeKey)
+        
+        return Listenable<String?>(college) { college in
+            defaults.set(college, forKey: collegeKey)
+        }
+    }()
+    
+    static var specialty: Listenable<String?> = {
+        var specialty = defaults.string(forKey: specialtyKey)
+        
+        return Listenable<String?>(specialty) { specialty in
+            defaults.set(specialty, forKey: specialtyKey)
         }
     }()
 }

@@ -87,6 +87,10 @@ class MainViewController: UIViewController {
             make.bottom.equalTo(self.view)
         }
     }
+    
+    @IBAction func closelogin(segue:UIStoryboardSegue){
+        // do nothing
+    }
 }
 
 extension MainViewController: MenuButtonViewDelegate, UIScrollViewDelegate {
