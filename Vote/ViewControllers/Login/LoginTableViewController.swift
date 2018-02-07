@@ -43,12 +43,9 @@ class LoginTableViewController: UITableViewController,UITextFieldDelegate {
         self.codewarp.addSubview(codebtn)
         codebtn.addTarget(self, action: #selector(sendButtonClick), for: .touchUpInside)//触发按钮
         
-        
-        
         var placeholdercolor = UIColor.init(red: 170/255, green: 170/255, blue: 170/255, alpha: 1)
-       phonetext.setValue(placeholdercolor, forKeyPath: "placeholderLabel.textColor")//设置placeholder颜色
-       codetext.setValue(placeholdercolor, forKeyPath: "placeholderLabel.textColor")//设置placeholder颜色
-      
+        phonetext.setValue(placeholdercolor, forKeyPath: "placeholderLabel.textColor")//设置placeholder颜色
+        codetext.setValue(placeholdercolor, forKeyPath: "placeholderLabel.textColor")//设置placeholder颜色
     }
     
     @objc func handTap (sender:UITapGestureRecognizer){//点击空白处收起键盘
@@ -68,6 +65,7 @@ class LoginTableViewController: UITableViewController,UITextFieldDelegate {
         textField.resignFirstResponder()//按回车键收起键盘
         return true
     }
+    
     var flagtwo = true //监听只能输入一个小数点
     var ftext = ""//监听只能输入一个小数点
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
@@ -124,7 +122,7 @@ class LoginTableViewController: UITableViewController,UITextFieldDelegate {
         let n1: NSMutableString = NSMutableString(string: phone)
         let m1 = n1.length == 11 ? true:false //手机号设置长度
         if !phone.isEqual("") && m1 == true{
-            if( resend == true){
+            if( resend == true) {
                 let parameters:Dictionary = ["phone":phone, "type":"login"]
                 let headers: HTTPHeaders = ["Accept": "application/json"]
                 Alamofire.request("https://www.bingowo.com/api/index.php/sms/get_code", method: .get, parameters: parameters, encoding: URLEncoding.default, headers: headers).responseJSON{ response in
@@ -195,10 +193,8 @@ class LoginTableViewController: UITableViewController,UITextFieldDelegate {
         // 计时开始时，逐秒减少remainingSeconds的值
         remainingSeconds -= 1
     }
+    
     /*=====================================================================*/
-    
-    
-
     @IBAction func colse(_ sender: UIButton) {//登录按钮
         /*
         @IBOutlet weak var phonetext: UITextField!//手机号
@@ -209,38 +205,23 @@ class LoginTableViewController: UITableViewController,UITextFieldDelegate {
         let phone  = phonetext.text!.trimmingCharacters(in: .whitespaces)//手机号/并去空
         let code = codetext.text!.trimmingCharacters(in: .whitespaces)//验证码/并去空
         
-        
         let n1: NSMutableString = NSMutableString(string: phone)
         let n2: NSMutableString = NSMutableString(string: code)
-        let m1 = n1.length == 11 ? true:false //手机号设置长度
-        let m2 = n2.length == 6 ? true:false //验证码长度
+        //手机号设置长度
+        let m1 = n1.length == 11 ? true:false
+        //验证码长度
+        let m2 = n2.length == 6 ? true:false
 
-        
-        
         if !phone.isEqual("") && !code.isEqual("") && m1 == true && m2 == true {
             //在此提交数据
-            let parameters:Dictionary = ["phone":phone, "code":code]
-            let headers: HTTPHeaders = ["Accept": "application/json"]
-            Alamofire.request("https://www.bingowo.com/api/index.php/login/denglu", method: .post, parameters: parameters, encoding: URLEncoding.default, headers: headers).responseJSON{ response in
-                switch response.result {
-                case .success(let json):
-                    log.debug(json)
-                    let dict = json as! Dictionary<String, AnyObject>
-                    let origin = dict["status"] as! Int
-                    let getData = dict["data"] as! Dictionary<String, AnyObject>
-                    if origin == 0 {
-                        self.alert("\(dict["msg"] as! String)")
-                    } else if origin == 1 {
-                        self.alert("登录成功")
-                        self.performSegue(withIdentifier: "closelogin", sender: self)
-
-                    }
-                case .failure(let error):
-                    print("\(error)")
-                }
-            }
-
-        }else{
+            UserService().userLogin(mobile: phone, code: code, failureHandler: { (reason, error) in
+                log.error(error)
+                VTAlert.alertSorryTips(message: error!.message, inViewController: self)
+            }, completion: {user in
+                self.alert("登录成功")
+                self.performSegue(withIdentifier: "closelogin", sender: self)
+            })
+        } else {
             if phone.isEqual(""){
                 alert("请填手机号码")
                 return
@@ -257,9 +238,7 @@ class LoginTableViewController: UITableViewController,UITextFieldDelegate {
                 alert("请正确填写验证码")
                 return
             }
-            
         }
-        
     }
     
     func alert(_ alerttext:String){
@@ -270,5 +249,4 @@ class LoginTableViewController: UITableViewController,UITextFieldDelegate {
             self.presentedViewController?.dismiss(animated: false, completion: nil)
         }
     }
-
 }

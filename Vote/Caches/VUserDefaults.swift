@@ -6,8 +6,9 @@
 //  Copyright © 2018年 林以达. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
+private let idKey       = "ID"
 private let tokenKey    = "token"
 private let avatarKey   = "avatar"
 private let phoneKey    = "phone"
@@ -48,6 +49,13 @@ class VUserDefaults {
     }
     
     // MARK: - props
+    static var id: Listenable<String?> = {
+        let id = defaults.string(forKey: idKey)
+        
+        return Listenable<String?>(id) { id in
+            defaults.set(id, forKey: idKey)
+        }
+    }()
     
     static var avatar: Listenable<String?> = {
         let avatar = defaults.string(forKey: avatarKey)
@@ -255,4 +263,17 @@ func isLogin() -> Bool {
     }
     
     return false
+}
+
+/**
+ * 检查登录状态，入锅没有登录呼出登录页面
+ **/
+func checkLoginStatus() -> Bool {
+    if !isLogin(), let appDelegate = UIApplication.shared.delegate as? AppDelegate {
+        appDelegate.showLogin()
+        
+        return false
+    }
+    
+    return true
 }

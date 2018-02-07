@@ -1,9 +1,11 @@
 platform :ios, '11.0'
 use_frameworks!
+
 target 'Vote' do
    pod 'Alamofire', '~> 4.5'
    pod 'SwiftyJSON'
    pod 'XCGLogger', '~> 4.0.0'
    pod 'ObjectMapper'
    pod 'SnapKit'
+   pod 'Kingfisher'
 end

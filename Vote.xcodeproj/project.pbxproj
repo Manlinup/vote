@@ -59,6 +59,7 @@
 		9303689320296AFF00C8FB55 /* UserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9303689220296AFF00C8FB55 /* UserService.swift */; };
 		9303689520296B3B00C8FB55 /* BaseService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9303689420296B3B00C8FB55 /* BaseService.swift */; };
 		9303689720296E2100C8FB55 /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9303689620296E2100C8FB55 /* NetworkService.swift */; };
+		9303689A2029D86600C8FB55 /* VTAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 930368992029D86600C8FB55 /* VTAlert.swift */; };
 		93586BC620275C0E007F84B1 /* APIDefine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93586BC420275C0E007F84B1 /* APIDefine.swift */; };
 		93586BC720275C0E007F84B1 /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93586BC520275C0E007F84B1 /* Config.swift */; };
 		93586BCB20275C4E007F84B1 /* VHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93586BC920275C4E007F84B1 /* VHelper.swift */; };
@@ -71,6 +72,7 @@
 		93586BFD20277025007F84B1 /* String+VT.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93586BFC20277025007F84B1 /* String+VT.swift */; };
 		93586C042027717C007F84B1 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93586C032027717C007F84B1 /* BaseViewController.swift */; };
 		93586C062027743F007F84B1 /* UIScrollView+VT.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93586C052027743F007F84B1 /* UIScrollView+VT.swift */; };
+		9362F244202A7D9300E3F255 /* UIImageView+VT.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9362F243202A7D9300E3F255 /* UIImageView+VT.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -129,6 +131,7 @@
 		9303689220296AFF00C8FB55 /* UserService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserService.swift; sourceTree = "<group>"; };
 		9303689420296B3B00C8FB55 /* BaseService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseService.swift; sourceTree = "<group>"; };
 		9303689620296E2100C8FB55 /* NetworkService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
+		930368992029D86600C8FB55 /* VTAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VTAlert.swift; sourceTree = "<group>"; };
 		93586BC420275C0E007F84B1 /* APIDefine.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIDefine.swift; sourceTree = "<group>"; };
 		93586BC520275C0E007F84B1 /* Config.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Config.swift; sourceTree = "<group>"; };
 		93586BC920275C4E007F84B1 /* VHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VHelper.swift; sourceTree = "<group>"; };
@@ -141,6 +144,7 @@
 		93586BFC20277025007F84B1 /* String+VT.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+VT.swift"; sourceTree = "<group>"; };
 		93586C032027717C007F84B1 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		93586C052027743F007F84B1 /* UIScrollView+VT.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIScrollView+VT.swift"; sourceTree = "<group>"; };
+		9362F243202A7D9300E3F255 /* UIImageView+VT.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+VT.swift"; sourceTree = "<group>"; };
 		C6014F02B74E8EEC95EAC650 /* Pods_Vote.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Vote.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -211,6 +215,14 @@
 				9303689620296E2100C8FB55 /* NetworkService.swift */,
 			);
 			path = Service;
+			sourceTree = "<group>";
+		};
+		930368982029D83800C8FB55 /* AlertView */ = {
+			isa = PBXGroup;
+			children = (
+				930368992029D86600C8FB55 /* VTAlert.swift */,
+			);
+			path = AlertView;
 			sourceTree = "<group>";
 		};
 		93586BC320275BF3007F84B1 /* Config */ = {
@@ -336,6 +348,7 @@
 				93586BFA20276E96007F84B1 /* UIColor+VT.swift */,
 				93586BFC20277025007F84B1 /* String+VT.swift */,
 				93586C052027743F007F84B1 /* UIScrollView+VT.swift */,
+				9362F243202A7D9300E3F255 /* UIImageView+VT.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -352,6 +365,7 @@
 		93586BF520276746007F84B1 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				930368982029D83800C8FB55 /* AlertView */,
 				93586BF720276E30007F84B1 /* Home */,
 				93586BF62027675F007F84B1 /* Cell */,
 			);
@@ -511,6 +525,7 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-Vote/Pods-Vote-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/Kingfisher/Kingfisher.framework",
 				"${BUILT_PRODUCTS_DIR}/ObjectMapper/ObjectMapper.framework",
 				"${BUILT_PRODUCTS_DIR}/SnapKit/SnapKit.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
@@ -519,6 +534,7 @@
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Kingfisher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ObjectMapper.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SnapKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
@@ -542,6 +558,7 @@
 				4CA04A651FEA5BD900ECEDE4 /* SurveyTarget02TableViewCell.swift in Sources */,
 				93586BFB20276E96007F84B1 /* UIColor+VT.swift in Sources */,
 				27720E591FBC1EB400FAE613 /* PutListTableController.swift in Sources */,
+				9362F244202A7D9300E3F255 /* UIImageView+VT.swift in Sources */,
 				4C31C99E1FDDA53B00179BDE /* LoginTableViewController.swift in Sources */,
 				4CA04A691FEA5C1600ECEDE4 /* SurveyTarget03TableViewCell.swift in Sources */,
 				279F66ED1FBAE7FA008E66A3 /* ContentController.swift in Sources */,
@@ -550,6 +567,7 @@
 				4CA04A4F1FE8E4EE00ECEDE4 /* MyDraftTableViewController.swift in Sources */,
 				4CC6D40E1FCD0D78009B7F02 /* AccountTableViewController.swift in Sources */,
 				2736666F1FC3CCAF004D77B4 /* SelectedTypeController.swift in Sources */,
+				9303689A2029D86600C8FB55 /* VTAlert.swift in Sources */,
 				279F66F31FBAE7FA008E66A3 /* Vote.xcdatamodeld in Sources */,
 				4C37CC771FCD6FF50085FDAB /* EditUserPhotoTableViewController.swift in Sources */,
 				9303689320296AFF00C8FB55 /* UserService.swift in Sources */,

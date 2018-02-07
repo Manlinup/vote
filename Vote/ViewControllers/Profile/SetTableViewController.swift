@@ -27,18 +27,17 @@ class SetTableViewController: UITableViewController {
         let action = UIAlertController(title:nil, message:nil , preferredStyle:.actionSheet )
        
         let op = UIAlertAction(title: "退出", style: .default) { (_) in
-            
-            self.Login()//弹回登录界面
+            VUserDefaults.cleanAllData()
+            //弹回登录界面
+            if let appDelegate = UIApplication.shared.delegate as? AppDelegate {
+                self.navigationController?.popToRootViewController(animated: false)
+                appDelegate.showLogin()
+            }
         }
         let op3 = UIAlertAction(title: "取消", style: .destructive, handler: nil)
         action.addAction(op)
         action.addAction(op3)
         self.present(action, animated: true, completion: nil)
-    }
-    
-    func Login(){//登录页面
-        let LoginViewController = storyboard?.instantiateViewController(withIdentifier: "LoginviewController") as! LoginTableViewController
-        self.present(LoginViewController, animated: true, completion: nil)
     }
     
      /*

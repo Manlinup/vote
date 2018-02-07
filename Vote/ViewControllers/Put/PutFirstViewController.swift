@@ -11,8 +11,6 @@ import UIKit
 class PutFirstViewController: UIViewController, UITextFieldDelegate {
 
     @IBOutlet weak var surveyName: UITextField!
-    
-    
     @IBOutlet weak var maxnumber: UILabel!//最长字数
     
     var surName = ""
@@ -24,21 +22,12 @@ class PutFirstViewController: UIViewController, UITextFieldDelegate {
         var placeholdercolor = UIColor.init(red: 170/255, green: 170/255, blue: 170/255, alpha: 1)
         surveyName.setValue(placeholdercolor, forKeyPath: "placeholderLabel.textColor")//设置placeholder颜色
         view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(handTap)))//添加点击空白收缩键盘事件
-
     }
-    
-    
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(true)
-       // Login()//跳转登录界面（用于监听是否已登陆）
     }
-    func Login(){//登录页面
-        let LoginViewController = storyboard?.instantiateViewController(withIdentifier: "LoginviewController") as! LoginTableViewController
-        self.present(LoginViewController, animated: true, completion: nil)
-    }
-    
-    
+
     // MARK: UItextFieldDelegate
     @objc  func handTap(sender:UITapGestureRecognizer) {//点击空白收缩键盘
         if sender.state == .ended{
@@ -47,9 +36,9 @@ class PutFirstViewController: UIViewController, UITextFieldDelegate {
     }
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {//点击return收缩键盘
         textField.resignFirstResponder()
+        
         return true
     }
-   
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {//
 
@@ -63,6 +52,7 @@ class PutFirstViewController: UIViewController, UITextFieldDelegate {
             return false
         }
         maxnumber.text = "\(newText.characters.count)"
+        
         return true
     }
  
@@ -74,10 +64,12 @@ class PutFirstViewController: UIViewController, UITextFieldDelegate {
             let dest = segue.destination as! PutMainTableController
             dest.voteName = surName
         }
-        
     }
 
-    @IBAction func goSecond(_ sender: UIButton) {//创建问卷按钮
+    //创建问卷按钮
+    @IBAction func goSecond(_ sender: UIButton) {
+        guard checkLoginStatus() else { return }
+        
         surveyName.resignFirstResponder()//收起键盘
         let surveyname = surveyName.text!.trimmingCharacters(in: .whitespaces) //输入框内容/并清除空格
         let surName2 = surName.trimmingCharacters(in: .whitespaces) //清除空格
@@ -106,7 +98,6 @@ class PutFirstViewController: UIViewController, UITextFieldDelegate {
                 alert("调查名称不规范")
                 return
             }
-            
         }
     }
     
@@ -122,7 +113,4 @@ class PutFirstViewController: UIViewController, UITextFieldDelegate {
     @IBAction func close(segue: UIStoryboardSegue) {//返场
         
     }
-  
-    
-    
 }

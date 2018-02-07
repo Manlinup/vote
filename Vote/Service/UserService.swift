@@ -13,6 +13,18 @@ class UserService: BaseService {
     func userLogin(mobile: String, code: String, failureHandler: FailureHandler?, completion: @escaping (User) -> Void) {
         let parse: (JSONDictionary) -> User? = { data in
             let user = Mapper<User>().map(JSON: data)
+            
+            // 保存用户信息
+            VUserDefaults.id.value = user?.id
+            VUserDefaults.token.value = user?.token
+            VUserDefaults.avatar.value = user?.avatar
+            VUserDefaults.name.value = user?.name
+            VUserDefaults.nick.value = user?.nick
+            VUserDefaults.phone.value = user?.phone
+            VUserDefaults.gender.value = user?.gender
+            VUserDefaults.remark.value = user?.remark
+            VUserDefaults.education.value = user?.education
+            
             return user
         }
     

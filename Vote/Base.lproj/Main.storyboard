@@ -2521,13 +2521,18 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="avatarImageView" destination="ajC-el-Rp8" id="Sx3-DX-T6d"/>
                         <outlet property="gradientBg" destination="kFO-qr-1uD" id="chb-DA-rVe"/>
                         <outlet property="gradientBtn0" destination="fxQ-5Y-vSe" id="qKY-tT-d3h"/>
                         <outlet property="gradientBtn1" destination="xtw-Ab-ycv" id="05h-kX-yqq"/>
                         <outlet property="gradientBtn2" destination="jGH-Ak-8Ts" id="4Xi-xZ-ekT"/>
                         <outlet property="gradientBtn3" destination="Htd-FX-sCW" id="MFe-8c-NyR"/>
+                        <outlet property="nickLabel" destination="nbm-KM-uiT" id="2wP-WQ-gI1"/>
+                        <outlet property="remarkLabel" destination="LJM-1g-rYK" id="8Jk-Ll-XCM"/>
+                        <outlet property="remarkTitleLabel" destination="HUb-FS-0H0" id="fAP-ur-Iga"/>
                         <outlet property="stackview" destination="Hpg-9s-WFH" id="nLE-Js-6gK"/>
                         <outlet property="stackview2" destination="fGH-sz-sad" id="0X2-aU-HUI"/>
+                        <outlet property="tagsView" destination="5Tt-Ws-Z7i" id="lUU-D3-xn4"/>
                         <segue destination="FsN-29-but" kind="show" identifier="AccountLink" id="Pxm-Xr-EzW"/>
                         <segue destination="2Ao-Ae-b9L" kind="show" identifier="QuestionnaireLink" id="EdQ-mH-4l1"/>
                         <segue destination="2xU-HC-x48" kind="show" identifier="UserInformationEditingLink" id="Tk0-Qv-lvz"/>

@@ -9,10 +9,6 @@
 import UIKit
 
 class WithdrawTableViewController: UITableViewController,UITextFieldDelegate {
-
-
-    
-    
     @IBOutlet weak var maxwithdrawal: UILabel!
     @IBOutlet weak var inputBoxView: UIView!
     @IBOutlet weak var input: UITextField!

@@ -36,12 +36,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // 启动图延长时间设置
         Thread.sleep(forTimeInterval: 1.5)
         
-        UserService().userLogin(mobile: "18866668888", code: "123456", failureHandler: { (reson, error) in
-            
-        }, completion: {result in
-            log.debug("token = \(result.token)")
-        })
-        
         return true
     }
 
@@ -73,6 +67,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             }
         }
     }
+}
 
+extension AppDelegate {
+    // login
+    func showLogin(){//登录页面
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let LoginViewController = storyboard.instantiateViewController(withIdentifier: "LoginviewController") as! LoginTableViewController
+        self.window?.rootViewController?.present(LoginViewController, animated: true, completion: nil)
+    }
 }
 

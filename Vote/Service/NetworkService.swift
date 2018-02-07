@@ -338,19 +338,20 @@ func errorMessageInData(data: NSData?) -> ErrorMsg? {
         if let json = decodeJSON(data: data) {
             var code: Int = -1
             
-            if let errorCode = json["code"] as? Int {
+            if let errorCode = json["status"] as? Int{
                 code = errorCode
             }
             
-            guard code != 10001 else {
+            // 正常消息
+            guard code != 1 else {
                 return nil
             }
             
-            if let msg = json["message"] as? String {
+            if let msg = json["msg"] as? String {
                 return ErrorMsg(code: code, message: msg)
             }
             
-            if let errorCode = json["code"] as? Int {
+            if let errorCode = json["status"] as? Int {
                 log.debug("error code = \(errorCode)")
                 
                 if let errorMsg = json["msg"] as? String {

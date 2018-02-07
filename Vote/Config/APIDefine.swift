@@ -22,7 +22,8 @@ enum HttpStatusCode: Int, CustomStringConvertible {
 }
 
 struct UserPath {
-    static let login   = "login/denglu"
+    static let login   = "/login/denglu"
+    static let edit    = "/account/edit"
 }
 
 

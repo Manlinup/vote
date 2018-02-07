@@ -67,7 +67,6 @@ class NavigationTableView: UITableViewController {
         return vote.count
     }
 
- 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! VoteListsCell
        
@@ -89,6 +88,8 @@ class NavigationTableView: UITableViewController {
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        guard checkLoginStatus() else { return }
+        
         if segue.identifier == "shwoVoteContent" {
             let dest = segue.destination as! VoteContentController
             dest.voteTitlte = vote[(tableView.indexPathForSelectedRow?.row)!][0] as! String

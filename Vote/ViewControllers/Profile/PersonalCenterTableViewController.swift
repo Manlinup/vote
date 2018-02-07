@@ -7,9 +7,14 @@
 //
 
 import UIKit
+import SnapKit
 
 class PersonalCenterTableViewController: UITableViewController {
-
+    @IBOutlet weak var nickLabel: UILabel!
+    @IBOutlet weak var remarkTitleLabel: UILabel!
+    @IBOutlet weak var remarkLabel: UILabel!
+    @IBOutlet weak var avatarImageView: UIImageView!
+    @IBOutlet weak var tagsView: UIStackView!
     
     @IBOutlet weak var gradientBg: UIView!
     @IBOutlet weak var gradientBtn0: UIButton!
@@ -18,17 +23,54 @@ class PersonalCenterTableViewController: UITableViewController {
     @IBOutlet weak var gradientBtn3: UIButton!
     @IBOutlet weak var stackview: UIStackView!
     @IBOutlet weak var stackview2: UIStackView!
+    
+    private lazy var loginButton: UIButton = {
+        let button = UIButton()
+        button.setTitle("未登录", for: .normal)
+        button.setTitleColor(UIColor.lightGray, for: .normal)
+        button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 16)
+        button.isHidden = true
+        
+        return button
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        Login()//跳转登录页面
+    
+        initNav()
+        makeUI()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(true)
+        
+        validLogin()
+        initData()
+        setupConstraints()
+    }
+    
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
+    }
+    
+    // MARK: Init
+    private func initData() {
+        nickLabel.text = VUserDefaults.nick.value
+        remarkLabel.text = VUserDefaults.remark.value
+        
+        avatarImageView.setImage(stringURL: VUserDefaults.avatar.value, placeholder: "avatar")
+    }
+    
+    private func initNav() {
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
         self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)//导航返回按钮样式
         tableView.backgroundColor = UIColor.white//(white: 0.98, alpha: 1)//表格背景颜色
         tableView.tableFooterView = UIView(frame: CGRect.zero)//去除页脚
         tableView.separatorColor = UIColor(white: 0, alpha: 0)//表格分割线颜色
-        
-        
-        
+    }
+    
+    private func makeUI() {
         //颜色渐变
         let Tb = UIColor.init(red: 186/255, green: 186/255, blue: 186/255, alpha: 1.0)
         let Ty = UIColor.init(red: 245/255, green: 245/255, blue: 245/255, alpha: 1.0)
@@ -54,7 +96,7 @@ class PersonalCenterTableViewController: UITableViewController {
         self.gradientBtn0.layer.cornerRadius = 10
         self.gradientBtn0.clipsToBounds = true
         self.gradientBtn0.layer.addSublayer(gradientLayer)
-
+        
         let  gradientLayer2 = CAGradientLayer()
         gradientLayer2.frame = self.stackview.bounds
         gradientLayer2.colors = [Tb1.cgColor,Ty1.cgColor]
@@ -82,47 +124,65 @@ class PersonalCenterTableViewController: UITableViewController {
         self.gradientBtn3.clipsToBounds = true
         self.gradientBtn3.layer.addSublayer(gradientLayer4)
         
+        view.addSubview(loginButton)
+        loginButton.addTarget(self, action: #selector(PersonalCenterTableViewController.onClickLoginAction), for: .touchUpInside)
     }
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(true)
-        //Login()//跳转登录页面
+    
+    private func setupConstraints() {
+        loginButton.snp.makeConstraints { (make) in
+            make.left.equalTo(nickLabel.snp.left)
+            make.size.equalTo(CGSize(width: 100, height: 44))
+            make.centerY.equalTo(avatarImageView)
+        }
+    }
+    
+    // MARK: private
+    private func validLogin() {
+        nickLabel.isHidden = !isLogin()
+        remarkLabel.isHidden = !isLogin()
+        remarkTitleLabel.isHidden = !isLogin()
+        tagsView.isHidden = !isLogin()
+        loginButton.isHidden = isLogin()
+    }
+    
+    // MARK: Action
+    @objc func onClickLoginAction() {
+        if let appDelegate = UIApplication.shared.delegate as? AppDelegate {
+            appDelegate.showLogin()
+        }
     }
     
     @IBAction func AccountLink(_ sender: UIButton) {//跳转账户
+        guard checkLoginStatus() else { return }
         
         performSegue(withIdentifier: "AccountLink", sender:self )
     }
     
     
     @IBAction func QuestionnaireLink(_ sender: UIButton) {//跳转问卷
-         performSegue(withIdentifier: "QuestionnaireLink", sender:self )
+        guard checkLoginStatus() else { return }
+        performSegue(withIdentifier: "QuestionnaireLink", sender:self )
     }
-    
-    
+
     @IBAction func UserInformationEditingLink(_ sender: UIButton) {//跳转用户信息编辑
-         performSegue(withIdentifier: "UserInformationEditingLink", sender:self )
+        guard checkLoginStatus() else { return }
+        performSegue(withIdentifier: "UserInformationEditingLink", sender:self )
     }
     
     @IBAction func MyDraftLink(_ sender: UIButton) {//跳转我的草稿
+        guard checkLoginStatus() else { return }
         performSegue(withIdentifier: "MyDraftLink", sender: self)
     }
     
-    
     @IBAction func myvote(_ sender: UIButton) {//我的投票
+        guard checkLoginStatus() else { return }
         alert("努力建设中...")
     }
     
-    
-    
     @IBAction func setLink(_ sender: UIBarButtonItem) {//跳转到设置
+        guard checkLoginStatus() else { return }
         performSegue(withIdentifier: "setLink", sender: self)
     }
-    
-    
-    func Login(){//登录页面
-                let LoginViewController = storyboard?.instantiateViewController(withIdentifier: "LoginviewController") as! LoginTableViewController
-                    self.present(LoginViewController, animated: true, completion: nil)
-            }
     
     func alert(_ alerttext:String){
         //弹框
@@ -131,10 +191,6 @@ class PersonalCenterTableViewController: UITableViewController {
         DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 1){//设置弹框显示时间
             self.presentedViewController?.dismiss(animated: false, completion: nil)
         }
-    }
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
 
     // MARK: - Table view data source

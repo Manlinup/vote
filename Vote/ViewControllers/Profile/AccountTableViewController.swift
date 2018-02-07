@@ -68,12 +68,8 @@ class AccountTableViewController: UITableViewController {
         }
     }
     
-    
-    
     @IBAction func RechargeLink(_ sender: UIBarButtonItem) {
-        
         performSegue(withIdentifier: "RechargeLink", sender:self )//跳转到充值
-        
     }
 
     func alert(_ alerttext:String){

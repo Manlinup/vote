@@ -18,7 +18,7 @@ class Config: NSObject {
     static var isRelease: Bool = false
     static var isEnableDebugLog: Bool = !isRelease
     
-    static let baseURL = NSURL(string: isRelease ? "https://www.bingowo.com/api/index.php/" : "https://www.bingowo.com/api/index.php/")!
+    static let baseURL = NSURL(string: isRelease ? "https://www.bingowo.com/api/index.php" : "https://www.bingowo.com/api/index.php")!
     static let serverDomain = "https://www.bingowo.com"
     
     static let networkTimeout: Double = 18
