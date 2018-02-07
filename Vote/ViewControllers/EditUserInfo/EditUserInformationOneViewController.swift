@@ -75,31 +75,31 @@ class EditUserInformationOneViewController: UIViewController,UITextFieldDelegate
         if textField == input {
             contanttext = newText
         }
+        
         return true
     }
 
     @IBAction func save(_ sender: UIBarButtonItem) {//存储数据
         let inputcontant = input.text!
         if(inputcontant.isEqual("") == false && inputcontant != initializationtext && contanttext.isEqual("") == false ){
-            
             if(munbertype == 2){//昵称
                 savetext = contanttext
-                performSegue(withIdentifier: "closeEditUserOne", sender:self)//转场
+                updateUserInfo(name: "uname", value: savetext!)
             }else if (munbertype == 5){//签名
                 savetext = contanttext
-                performSegue(withIdentifier: "closeEditUserOne", sender:self)//转场
+                updateUserInfo(name: "signature", value: savetext!)
             }else if(munbertype == 7){//公司
                savetext = contanttext
-               performSegue(withIdentifier: "closeEditUserOne", sender:self)//转场
+               updateUserInfo(name: "company", value: savetext!)
             } else if(munbertype == 10){
                savetext = contanttext
-                performSegue(withIdentifier: "closeEditUserOne", sender:self)//转场
+               updateUserInfo(name: "nickname", value: savetext!)
             } else if(munbertype == 15){
                 savetext = contanttext
-                performSegue(withIdentifier: "closeEditUserOne", sender:self)//转场
+                updateUserInfo(name: "graduate", value: savetext!)
             } else if(munbertype == 16){
                 savetext = contanttext
-                performSegue(withIdentifier: "closeEditUserOne", sender:self)//转场
+               updateUserInfo(name: "major", value: savetext!)
             }
             
         }else if(inputcontant.isEqual("") == true){
@@ -107,13 +107,7 @@ class EditUserInformationOneViewController: UIViewController,UITextFieldDelegate
         }else if (inputcontant == initializationtext){
             alert("内容无改变")
         }
-        
-        
     }
-    
- 
-
-    
     
     func alert(_ alerttext:String){
         //弹框
@@ -123,14 +117,13 @@ class EditUserInformationOneViewController: UIViewController,UITextFieldDelegate
             self.presentedViewController?.dismiss(animated: false, completion: nil)
         }
     }
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    
+    
+    func updateUserInfo(name: String, value: String) {
+        UserService().userEdit(name: name, value: value, failureHandler: { (reason, error) in
+            VTAlert.alertSorryTips(message: error!.message, inViewController: self)
+        }, completion: {user in
+            self.performSegue(withIdentifier: "closeEditUserOne", sender:self )
+        })
     }
-    */
-
 }

@@ -194,7 +194,7 @@ public func apiRequest<A>(modifyRequest: (NSMutableURLRequest) -> (), baseURL: N
         }
     }
     
-    func getPostBody(params:[String:Any]) -> Data {
+    func getPostBody(params:[String: Any]) -> Data {
         var components: [(String, String)] = []
         
         for key in params.keys.sorted(by: <) {
@@ -277,31 +277,22 @@ public func apiRequest<A>(modifyRequest: (NSMutableURLRequest) -> (), baseURL: N
                     handleFailure(.NoData, errorMessageInData(data: data as NSData?))
                 }
                 
-            case HttpStatusCode.bad_request.rawValue, HttpStatusCode.failed.rawValue, HttpStatusCode.access_invalid.rawValue:
+            case HttpStatusCode.bad_request.rawValue, HttpStatusCode.failed.rawValue, HttpStatusCode.access_invalid.rawValue, HttpStatusCode.not_found.rawValue:
                 // 检查错误
                 let errorMsg = errorMessageInData(data: data as NSData?)
                 
                 if  errorMsg != nil {
                     handleFailure(.NoSuccessStatusCode(statusCode: (errorMsg?.code)!), errorMsg)
                 } else {
-                    handleFailure(.NoSuccessStatusCode(statusCode: httpResponse.statusCode), nil)
+                    handleFailure(.NoSuccessStatusCode(statusCode: httpResponse.statusCode), ErrorMsg(message: "出了点小状况，请再试一下^o^"))
                 }
             case HttpStatusCode.auth_failed.rawValue:
-                let errorMsg = errorMessageInData(data: data as NSData?)
-                if let message = errorMsg?.message {
-                    log.error("auth failed = \(message)")
-                }
+                VUserDefaults.token.value = nil
                 
-                if let requestHost = request.url?.host, requestHost == Config.baseURL.host {
-                    VUserDefaults.token.value = nil
-                    // todo: user should login
-                }
-                
-                handleFailure(.NoSuccessStatusCode(statusCode: httpResponse.statusCode), nil)
-            case HttpStatusCode.not_found.rawValue:
-                handleFailure(.NoSuccessStatusCode(statusCode: httpResponse.statusCode), nil)
+                _ = checkLoginStatus()
+                handleFailure(.NoSuccessStatusCode(statusCode: httpResponse.statusCode), ErrorMsg(message: "登录失效，请重新登录"))
             default:
-                handleFailure(.Other(error as NSError?), nil)
+                handleFailure(.Other(error as NSError?), ErrorMsg(message: "出了点小状况，请再试一下^o^"))
             }
             
         } else {
@@ -449,14 +440,17 @@ public func maybeAuthjsonResource<A>(path: String, method: Method, requestParame
 }
 
 public func authJsonResource<A>(path: String, method: Method, requestParameters: JSONDictionary, parse: @escaping (JSONDictionary) -> A?) -> Resource<A>? {
+    
+    guard checkLoginStatus() else {
+        return nil
+    }
+    
     guard let originToken = VUserDefaults.token.value else {
         log.debug("No token for auth")
-        // todo
-        
         return nil
     }
 
-    let params: NSMutableDictionary = ["token" : VUserDefaults.token.value!]
+    let params: NSMutableDictionary = ["token" : originToken]
     params.addEntries(from: requestParameters)
     
     return jsonResource(token: originToken, path: path, method: method, requestParameters: (params as! JSONDictionary), parse: parse)

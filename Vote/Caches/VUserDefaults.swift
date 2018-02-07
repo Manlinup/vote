@@ -15,6 +15,7 @@ private let phoneKey    = "phone"
 private let nickKey     = "nick"
 private let remarkKey   = "remark"
 private let genderKey   = "gender"
+private let ageKey      = "age"
 private let businessKey = "business"
 private let companyKey  = "company"
 private let countryKey  = "country"
@@ -26,6 +27,7 @@ private let heightKey   = "height"
 private let educationKey = "education"
 private let collegeKey   = "college"
 private let specialtyKey = "specialty"
+private let hobbyKey     = "hobby"
 
 class VUserDefaults {
     static let defaults = UserDefaults()
@@ -78,6 +80,14 @@ class VUserDefaults {
         
         return Listenable<String?>(phone) { phone in
             defaults.set(phone, forKey: phoneKey)
+        }
+    }()
+    
+    static var hobby: Listenable<String?> = {
+        var hobby = defaults.string(forKey: hobbyKey)
+        
+        return Listenable<String?>(hobby) { hobby in
+            defaults.set(hobby, forKey: hobbyKey)
         }
     }()
     
@@ -142,6 +152,14 @@ class VUserDefaults {
         
         return Listenable<String?>(name) { name in
             defaults.set(name, forKey: nameKey)
+        }
+    }()
+    
+    static var age: Listenable<String?> = {
+        var age = defaults.string(forKey: ageKey)
+        
+        return Listenable<String?>(age) { age in
+            defaults.set(age, forKey: ageKey)
         }
     }()
     

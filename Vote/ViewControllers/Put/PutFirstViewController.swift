@@ -110,7 +110,8 @@ class PutFirstViewController: UIViewController, UITextFieldDelegate {
         }
     }
     
-    @IBAction func close(segue: UIStoryboardSegue) {//返场
+    //返场
+    @IBAction func close(segue: UIStoryboardSegue) {
         
     }
 }

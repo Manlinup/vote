@@ -9,7 +9,6 @@
 import UIKit
 
 class EditUserInterestTableViewController: UITableViewController {
-
     override func viewDidLoad() {
         super.viewDidLoad()
        
@@ -28,8 +27,6 @@ class EditUserInterestTableViewController: UITableViewController {
     
     @IBAction func save(_ sender: UIBarButtonItem) {//存储
         performSegue(withIdentifier: "closeEditUserInterest", sender: self)
-        
-        
     }
     
  /*

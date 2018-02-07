@@ -2532,7 +2532,8 @@
                         <outlet property="remarkTitleLabel" destination="HUb-FS-0H0" id="fAP-ur-Iga"/>
                         <outlet property="stackview" destination="Hpg-9s-WFH" id="nLE-Js-6gK"/>
                         <outlet property="stackview2" destination="fGH-sz-sad" id="0X2-aU-HUI"/>
-                        <outlet property="tagsView" destination="5Tt-Ws-Z7i" id="lUU-D3-xn4"/>
+                        <outlet property="tag1Label" destination="RgK-dv-1oe" id="2IR-ur-1ES"/>
+                        <outlet property="tag2Label" destination="Cg4-tc-QjM" id="A7B-XI-Vlh"/>
                         <segue destination="FsN-29-but" kind="show" identifier="AccountLink" id="Pxm-Xr-EzW"/>
                         <segue destination="2Ao-Ae-b9L" kind="show" identifier="QuestionnaireLink" id="EdQ-mH-4l1"/>
                         <segue destination="2xU-HC-x48" kind="show" identifier="UserInformationEditingLink" id="Tk0-Qv-lvz"/>
@@ -4276,23 +4277,12 @@
                                                         </userDefinedRuntimeAttribute>
                                                     </userDefinedRuntimeAttributes>
                                                 </imageView>
-                                                <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1vG-im-lmI">
-                                                    <rect key="frame" x="384" y="32" width="15" height="15"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="width" constant="15" id="T8E-87-kMY"/>
-                                                        <constraint firstAttribute="height" constant="15" id="gjH-8i-8ug"/>
-                                                    </constraints>
-                                                    <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                    <state key="normal" image="arrowtwo"/>
-                                                </button>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="rTz-xg-dUP" firstAttribute="leading" secondItem="4BM-an-QGS" secondAttribute="leading" constant="15" id="BCj-ap-EX1"/>
                                                 <constraint firstItem="rTz-xg-dUP" firstAttribute="centerY" secondItem="4BM-an-QGS" secondAttribute="centerY" id="MHy-8b-TE2"/>
-                                                <constraint firstItem="1vG-im-lmI" firstAttribute="centerY" secondItem="4BM-an-QGS" secondAttribute="centerY" id="Q98-j1-ACC"/>
                                                 <constraint firstItem="xZS-4k-MtK" firstAttribute="centerY" secondItem="4BM-an-QGS" secondAttribute="centerY" id="fjj-jb-gp7"/>
                                                 <constraint firstItem="xZS-4k-MtK" firstAttribute="leading" secondItem="rTz-xg-dUP" secondAttribute="trailing" constant="25" id="kBK-Sw-iHS"/>
-                                                <constraint firstAttribute="trailing" secondItem="1vG-im-lmI" secondAttribute="trailing" constant="15" id="mBd-cJ-WhK"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
@@ -5028,6 +5018,7 @@
                     </tableView>
                     <navigationItem key="navigationItem" title="编辑个人资料" id="jjk-Tg-VfB"/>
                     <connections>
+                        <outlet property="avatarImageView" destination="xZS-4k-MtK" id="5rq-Y4-AAm"/>
                         <outlet property="bodyweight" destination="fhn-bB-2YB" id="Ud6-5p-y8p"/>
                         <outlet property="busttext" destination="aK5-vK-LYh" id="cHT-Oq-XXp"/>
                         <outlet property="companytext" destination="fZj-Q1-kpr" id="Blo-a0-aeK"/>

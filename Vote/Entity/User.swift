@@ -34,6 +34,7 @@ struct User: Mappable {
     var draftNum: Int?
     var articleNum: Int?
     var hobby: [String]?
+    var age: String?
     
     init?(map: Map) {
         // do nothing
@@ -45,25 +46,26 @@ struct User: Mappable {
         avatar     <- map["photo"]
         phone      <- map["phone"]
         thumb      <- map["thumb"]
-        nick       <- map["nickname"]
+        nick       <- map["uname"]
         remark     <- map["signature"]
         gender     <- map["sex"]
-        business   <- map["business"]
+        business   <- map["industry"]
         company    <- map["company"]
-        country    <- map["country"]
+        country    <- map["house"]
         like       <- map["like"]
-        name       <- map["uname"]
-        bust       <- map["bust"]
+        name       <- map["nickname"]
+        bust       <- map["chest"]
         weight     <- map["weight"]
         height     <- map["height"]
         education  <- map["educational"]
-        college    <- map["college"]
-        specialty  <- map["specialty"]
+        college    <- map["graduate"]
+        specialty  <- map["major"]
         money      <- map["money"]
         answerNum  <- map["answerNum"]
         draftNum   <- map["draftNum"]
         articleNum <- map["articleNum"]
         hobby      <- map["hobby"]
+        age        <- map["age"]
     }
 }
 

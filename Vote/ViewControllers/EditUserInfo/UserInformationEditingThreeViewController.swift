@@ -9,9 +9,7 @@
 import UIKit
 
 class UserInformationEditingThreeViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource{
-    
 
-    
     @IBOutlet weak var determinebtn: UIButton!//确定按钮
     @IBOutlet weak var cancelbtn: UIButton!//取消按钮
     @IBOutlet weak var titletext: UILabel!//标题
@@ -218,16 +216,12 @@ class UserInformationEditingThreeViewController: UIViewController, UIPickerViewD
     }
     
     
-    @IBAction func determinebtn(_ sender: UIButton) {//存储数据
-        
+    //存储数据
+    @IBAction func determinebtn(_ sender: UIButton) {
         getPickerViewValue()
-        
     }
-    
-    
    
-  func getPickerViewValue(){
-    
+  func getPickerViewValue() {
         if !selectText.isEqual("") {
              savetext = selectText
         } else {
@@ -240,8 +234,9 @@ class UserInformationEditingThreeViewController: UIViewController, UIPickerViewD
                 savetext = self.bustarray[pickerView.selectedRow(inComponent: 0)]
             }else if(munbertype == 12){
                 savetext = self.bodyweightarray[pickerView.selectedRow(inComponent: 0)]
-            }else if(munbertype == 13){
+            } else if(munbertype == 13){
                 savetext = self.heightarray[pickerView.selectedRow(inComponent: 0)]
+            } else if(munbertype == 14){
                 savetext = self.Educationarray[pickerView.selectedRow(inComponent: 0)]
             }
         }
@@ -250,23 +245,34 @@ class UserInformationEditingThreeViewController: UIViewController, UIPickerViewD
                                                 message: savetext, preferredStyle: .alert)
         //let okAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
         let okAction = UIAlertAction(title: "确定", style: .cancel){ (_) in
-            
-             self.performSegue(withIdentifier: "closeEditUserThree", sender:self )
+            switch (self.munbertype) {
+            case 3:
+                self.updateUserInfo(name: "sex", value: self.savetext!)
+            case 4:
+                self.updateUserInfo(name: "age", value: self.savetext!)
+            case 11:
+                self.updateUserInfo(name: "chest", value: self.savetext!)
+            case 12:
+                self.updateUserInfo(name: "weight", value: self.savetext!)
+            case 13:
+                self.updateUserInfo(name: "height", value: self.savetext!)
+            case 14:
+                self.updateUserInfo(name: "educational", value: self.savetext!)
+            default:
+                break
+            }
         }
-   
+    
         alertController.addAction(okAction)
+    
         self.present(alertController, animated: true, completion: nil)
     }
-
-   
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    
+    func updateUserInfo(name: String, value: String) {
+        UserService().userEdit(name: name, value: value, failureHandler: { (reason, error) in
+            VTAlert.alertSorryTips(message: error!.message, inViewController: self)
+        }, completion: {user in
+            self.performSegue(withIdentifier: "closeEditUserThree", sender:self )
+        })
     }
-    */
-
 }

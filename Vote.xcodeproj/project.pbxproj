@@ -261,6 +261,7 @@
 				93586BE920275F88007F84B1 /* Home */,
 				93586BE820275F7A007F84B1 /* Put */,
 				93586BE720275F67007F84B1 /* Profile */,
+				9362F245202A863F00E3F255 /* EditUserInfo */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -268,21 +269,15 @@
 		93586BE720275F67007F84B1 /* Profile */ = {
 			isa = PBXGroup;
 			children = (
+				4CC6D40B1FCCF8FF009B7F02 /* PersonalCenterTableViewController.swift */,
 				4C37CC741FCD6D3A0085FDAB /* UserInformationEditingTableViewController.swift */,
 				4CC6D40F1FCD1331009B7F02 /* WithdrawTableViewController.swift */,
-				4C768D811FD9253A00A53447 /* EditUserInformationTwoTableViewCell.swift */,
 				4CC6D4111FCD3232009B7F02 /* RechargeTableViewController.swift */,
 				4CC6D4171FCD5554009B7F02 /* QuestionnaireDetailsTableViewController.swift */,
-				4C37CC761FCD6FF50085FDAB /* EditUserPhotoTableViewController.swift */,
 				4CA04A501FE9FDD400ECEDE4 /* SetTableViewController.swift */,
-				4C5CA8E71FCEB1260033F3E4 /* EditUserInterestTableViewController.swift */,
-				4C767A241FD6869F0026387A /* UserInformationEditingThreeViewController.swift */,
 				4CC6D4131FCD3F31009B7F02 /* QuestionnaireTableViewController.swift */,
 				4C4C99371FDD1ED90097704E /* BankCardTableViewController.swift */,
-				4CC6D40B1FCCF8FF009B7F02 /* PersonalCenterTableViewController.swift */,
 				4CC6D40D1FCD0D78009B7F02 /* AccountTableViewController.swift */,
-				4C5CA8EF1FCEB4B30033F3E4 /* EditUserInformationTwoTableViewController.swift */,
-				4C5CA8F11FCEB61D0033F3E4 /* EditUserInformationOneViewController.swift */,
 				4C31C99B1FDD575000179BDE /* AddBankCardTableViewController.swift */,
 				4CA04A4E1FE8E4EE00ECEDE4 /* MyDraftTableViewController.swift */,
 			);
@@ -401,6 +396,19 @@
 				93586C032027717C007F84B1 /* BaseViewController.swift */,
 			);
 			path = Base;
+			sourceTree = "<group>";
+		};
+		9362F245202A863F00E3F255 /* EditUserInfo */ = {
+			isa = PBXGroup;
+			children = (
+				4C5CA8F11FCEB61D0033F3E4 /* EditUserInformationOneViewController.swift */,
+				4C768D811FD9253A00A53447 /* EditUserInformationTwoTableViewCell.swift */,
+				4C767A241FD6869F0026387A /* UserInformationEditingThreeViewController.swift */,
+				4C5CA8E71FCEB1260033F3E4 /* EditUserInterestTableViewController.swift */,
+				4C37CC761FCD6FF50085FDAB /* EditUserPhotoTableViewController.swift */,
+				4C5CA8EF1FCEB4B30033F3E4 /* EditUserInformationTwoTableViewController.swift */,
+			);
+			path = EditUserInfo;
 			sourceTree = "<group>";
 		};
 		EC471E354DA518BE2A2F8CCD /* Pods */ = {

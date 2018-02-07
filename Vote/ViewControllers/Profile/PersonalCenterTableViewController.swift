@@ -14,7 +14,8 @@ class PersonalCenterTableViewController: UITableViewController {
     @IBOutlet weak var remarkTitleLabel: UILabel!
     @IBOutlet weak var remarkLabel: UILabel!
     @IBOutlet weak var avatarImageView: UIImageView!
-    @IBOutlet weak var tagsView: UIStackView!
+    @IBOutlet weak var tag1Label: UILabel!
+    @IBOutlet weak var tag2Label: UILabel!
     
     @IBOutlet weak var gradientBg: UIView!
     @IBOutlet weak var gradientBtn0: UIButton!
@@ -60,6 +61,17 @@ class PersonalCenterTableViewController: UITableViewController {
         remarkLabel.text = VUserDefaults.remark.value
         
         avatarImageView.setImage(stringURL: VUserDefaults.avatar.value, placeholder: "avatar")
+        
+        if let tags = VUserDefaults.hobby.value, tags.contains(",") {
+            let array = tags.components(separatedBy: ",")
+            tag1Label.text = array[0]
+            tag2Label.text = array[1]
+            tag1Label.isHidden = false
+            tag2Label.isHidden = false
+        } else {
+            tag1Label.isHidden = true
+            tag2Label.isHidden = true
+        }
     }
     
     private func initNav() {
@@ -141,7 +153,8 @@ class PersonalCenterTableViewController: UITableViewController {
         nickLabel.isHidden = !isLogin()
         remarkLabel.isHidden = !isLogin()
         remarkTitleLabel.isHidden = !isLogin()
-        tagsView.isHidden = !isLogin()
+        tag1Label.isHidden = !isLogin()
+        tag2Label.isHidden = !isLogin()
         loginButton.isHidden = isLogin()
     }
     
