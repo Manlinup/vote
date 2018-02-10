@@ -60,6 +60,7 @@
 		9303689520296B3B00C8FB55 /* BaseService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9303689420296B3B00C8FB55 /* BaseService.swift */; };
 		9303689720296E2100C8FB55 /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9303689620296E2100C8FB55 /* NetworkService.swift */; };
 		9303689A2029D86600C8FB55 /* VTAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 930368992029D86600C8FB55 /* VTAlert.swift */; };
+		930DA981202B4EF50038F5F6 /* ArticleService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 930DA980202B4EF50038F5F6 /* ArticleService.swift */; };
 		93586BC620275C0E007F84B1 /* APIDefine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93586BC420275C0E007F84B1 /* APIDefine.swift */; };
 		93586BC720275C0E007F84B1 /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93586BC520275C0E007F84B1 /* Config.swift */; };
 		93586BCB20275C4E007F84B1 /* VHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93586BC920275C4E007F84B1 /* VHelper.swift */; };
@@ -73,6 +74,8 @@
 		93586C042027717C007F84B1 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93586C032027717C007F84B1 /* BaseViewController.swift */; };
 		93586C062027743F007F84B1 /* UIScrollView+VT.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93586C052027743F007F84B1 /* UIScrollView+VT.swift */; };
 		9362F244202A7D9300E3F255 /* UIImageView+VT.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9362F243202A7D9300E3F255 /* UIImageView+VT.swift */; };
+		939AA91B202DE33A00E72064 /* VoteEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 939AA91A202DE33A00E72064 /* VoteEntity.swift */; };
+		939AA91D202E836700E72064 /* TransformHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 939AA91C202E836700E72064 /* TransformHelper.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -132,6 +135,7 @@
 		9303689420296B3B00C8FB55 /* BaseService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseService.swift; sourceTree = "<group>"; };
 		9303689620296E2100C8FB55 /* NetworkService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
 		930368992029D86600C8FB55 /* VTAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VTAlert.swift; sourceTree = "<group>"; };
+		930DA980202B4EF50038F5F6 /* ArticleService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleService.swift; sourceTree = "<group>"; };
 		93586BC420275C0E007F84B1 /* APIDefine.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIDefine.swift; sourceTree = "<group>"; };
 		93586BC520275C0E007F84B1 /* Config.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Config.swift; sourceTree = "<group>"; };
 		93586BC920275C4E007F84B1 /* VHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VHelper.swift; sourceTree = "<group>"; };
@@ -145,6 +149,8 @@
 		93586C032027717C007F84B1 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		93586C052027743F007F84B1 /* UIScrollView+VT.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIScrollView+VT.swift"; sourceTree = "<group>"; };
 		9362F243202A7D9300E3F255 /* UIImageView+VT.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+VT.swift"; sourceTree = "<group>"; };
+		939AA91A202DE33A00E72064 /* VoteEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VoteEntity.swift; sourceTree = "<group>"; };
+		939AA91C202E836700E72064 /* TransformHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransformHelper.swift; sourceTree = "<group>"; };
 		C6014F02B74E8EEC95EAC650 /* Pods_Vote.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Vote.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -210,9 +216,10 @@
 		9303689120296AE500C8FB55 /* Service */ = {
 			isa = PBXGroup;
 			children = (
+				9303689620296E2100C8FB55 /* NetworkService.swift */,
 				9303689420296B3B00C8FB55 /* BaseService.swift */,
 				9303689220296AFF00C8FB55 /* UserService.swift */,
-				9303689620296E2100C8FB55 /* NetworkService.swift */,
+				930DA980202B4EF50038F5F6 /* ArticleService.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -239,6 +246,7 @@
 			children = (
 				93586BC920275C4E007F84B1 /* VHelper.swift */,
 				93586BCA20275C4E007F84B1 /* VLoger.swift */,
+				939AA91C202E836700E72064 /* TransformHelper.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -248,6 +256,7 @@
 			children = (
 				663A3A802015CECD0094EB75 /* XYDVoteContentModel.swift */,
 				9303688F202968C000C8FB55 /* User.swift */,
+				939AA91A202DE33A00E72064 /* VoteEntity.swift */,
 			);
 			path = Entity;
 			sourceTree = "<group>";
@@ -320,8 +329,8 @@
 		93586BEB20276011007F84B1 /* Vote */ = {
 			isa = PBXGroup;
 			children = (
-				279F66EC1FBAE7FA008E66A3 /* ContentController.swift */,
 				279F67231FBAEDFC008E66A3 /* VoteContentController.swift */,
+				279F66EC1FBAE7FA008E66A3 /* ContentController.swift */,
 			);
 			path = Vote;
 			sourceTree = "<group>";
@@ -572,6 +581,7 @@
 				279F66ED1FBAE7FA008E66A3 /* ContentController.swift in Sources */,
 				93586BC620275C0E007F84B1 /* APIDefine.swift in Sources */,
 				4CC6D4141FCD3F31009B7F02 /* QuestionnaireTableViewController.swift in Sources */,
+				939AA91D202E836700E72064 /* TransformHelper.swift in Sources */,
 				4CA04A4F1FE8E4EE00ECEDE4 /* MyDraftTableViewController.swift in Sources */,
 				4CC6D40E1FCD0D78009B7F02 /* AccountTableViewController.swift in Sources */,
 				2736666F1FC3CCAF004D77B4 /* SelectedTypeController.swift in Sources */,
@@ -599,11 +609,13 @@
 				4CA04A611FEA5BB100ECEDE4 /* SurveyTarget01TableViewCell.swift in Sources */,
 				4C768D821FD9253A00A53447 /* EditUserInformationTwoTableViewCell.swift in Sources */,
 				4C31C99C1FDD575000179BDE /* AddBankCardTableViewController.swift in Sources */,
+				930DA981202B4EF50038F5F6 /* ArticleService.swift in Sources */,
 				279F671E1FBAE862008E66A3 /* VoteListsCell.swift in Sources */,
 				4CC6D4181FCD5554009B7F02 /* QuestionnaireDetailsTableViewController.swift in Sources */,
 				9303689720296E2100C8FB55 /* NetworkService.swift in Sources */,
 				93586BCC20275C4E007F84B1 /* VLoger.swift in Sources */,
 				4C4C99381FDD1ED90097704E /* BankCardTableViewController.swift in Sources */,
+				939AA91B202DE33A00E72064 /* VoteEntity.swift in Sources */,
 				4C4C993A1FDD22550097704E /* BankCardTableViewCell.swift in Sources */,
 				4C5CA8F21FCEB61D0033F3E4 /* EditUserInformationOneViewController.swift in Sources */,
 				4CA04A671FEA5C0800ECEDE4 /* SurveyTarget03TableViewController.swift in Sources */,

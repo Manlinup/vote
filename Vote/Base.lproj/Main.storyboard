@@ -120,7 +120,7 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9qm-nF-csh">
                                 <rect key="frame" x="30" y="636" width="354" height="50"/>
                                 <subviews>
-                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="xvF-mP-Mls">
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="equalCentering" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="xvF-mP-Mls">
                                         <rect key="frame" x="62" y="0.0" width="230" height="50"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ux9-ps-Vov">
@@ -225,11 +225,22 @@
                                     <constraint firstItem="xvF-mP-Mls" firstAttribute="centerY" secondItem="9qm-nF-csh" secondAttribute="centerY" id="scN-V6-boU"/>
                                 </constraints>
                             </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nkp-3s-FkS">
+                                <rect key="frame" x="113" y="25" width="189" height="32"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="32" id="wBa-JI-DHW"/>
+                                    <constraint firstAttribute="width" constant="189" id="zcu-zE-IXS"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="Wzz-Kb-3Uv" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="40" id="25i-Tb-dV4"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="1nR-dt-XdX" secondAttribute="trailing" constant="40" id="3Sg-YV-iMC"/>
+                            <constraint firstItem="nkp-3s-FkS" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="9jU-1g-qI1"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="voC-ml-C9E" secondAttribute="trailing" constant="40" id="Af7-Xa-Gqh"/>
                             <constraint firstItem="1nR-dt-XdX" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="40" id="CiP-VV-1fy"/>
                             <constraint firstItem="G0Y-nQ-Cxy" firstAttribute="top" secondItem="te1-YD-Hid" secondAttribute="bottom" constant="28" id="DY6-JA-C3K"/>
@@ -244,6 +255,7 @@
                             <constraint firstItem="1nR-dt-XdX" firstAttribute="top" secondItem="G0Y-nQ-Cxy" secondAttribute="bottom" constant="35" id="V4r-pb-Cbv"/>
                             <constraint firstItem="qIK-5B-1ry" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="15" id="VeB-Xx-sea"/>
                             <constraint firstItem="G0Y-nQ-Cxy" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="25" id="Wkt-Ur-Ufu"/>
+                            <constraint firstItem="nkp-3s-FkS" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="5" id="av3-eS-sGx"/>
                             <constraint firstItem="Alz-qo-0Vq" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="5" id="feI-Wd-m3C"/>
                             <constraint firstItem="G0Y-nQ-Cxy" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="gfX-bC-lD1"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Alz-qo-0Vq" secondAttribute="trailing" constant="15" id="kGM-zF-abf"/>
@@ -264,10 +276,15 @@
                     <connections>
                         <outlet property="backBtn" destination="Alz-qo-0Vq" id="fvh-8i-5q1"/>
                         <outlet property="bgView" destination="te1-YD-Hid" id="Wf6-Bf-R37"/>
+                        <outlet property="btnA" destination="ux9-ps-Vov" id="QUV-Yv-4Gv"/>
+                        <outlet property="btnB" destination="wOw-Jn-bC6" id="ihU-P4-QBa"/>
+                        <outlet property="btnC" destination="UlQ-ba-SCa" id="Gdz-st-WUE"/>
+                        <outlet property="btnD" destination="ShJ-ap-Wz5" id="Bgl-oE-CdA"/>
                         <outlet property="selcetA" destination="1nR-dt-XdX" id="WTY-DU-hid"/>
                         <outlet property="selcetB" destination="voC-ml-C9E" id="q8K-hA-f6e"/>
                         <outlet property="selcetC" destination="G8x-sp-X4p" id="oAA-j8-ibA"/>
                         <outlet property="selcetD" destination="Wzz-Kb-3Uv" id="WGI-Bc-BJi"/>
+                        <outlet property="titleLabel" destination="nkp-3s-FkS" id="cug-V4-7z4"/>
                         <outlet property="voteNum" destination="Zmo-gm-Fju" id="FEC-8w-sbA"/>
                         <outlet property="voteSort" destination="yWb-GJ-s0u" id="pxO-XU-DnV"/>
                         <outlet property="voteTitle" destination="FC6-XR-MPp" id="D9S-83-626"/>
@@ -277,7 +294,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
                 <exit id="Jdr-kr-7Tn" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="5880.8000000000002" y="103.89805097451276"/>
+            <point key="canvasLocation" x="5879.7101449275369" y="103.53260869565219"/>
         </scene>
         <!--Multiple Choice Table View Controller-->
         <scene sceneID="raJ-Xk-emw">

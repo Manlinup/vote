@@ -42,7 +42,10 @@ class NavigationTableView: UITableViewController {
                    // print(json["data"][0]["title"])
                     for (key,value) in json["data"].enumerated() {
                         //print(json["data"][key]["title"].string!)
-                        var voteData = [json["data"][key]["title"].string!, json["data"][key]["num"].string!, json["data"][key]["time"].string!]
+                        var voteData = [json["data"][key]["title"].string!,
+                                        json["data"][key]["num"].string!,
+                                        json["data"][key]["time"].string!,
+                                        json["data"][key]["question_id"].string!]
                         array.append(voteData)
                     }
                     self.reloadUI(array)
@@ -89,11 +92,13 @@ class NavigationTableView: UITableViewController {
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         guard checkLoginStatus() else { return }
-        
-        if segue.identifier == "shwoVoteContent" {
-            let dest = segue.destination as! VoteContentController
-            dest.voteTitlte = vote[(tableView.indexPathForSelectedRow?.row)!][0] as! String
+    
+        let voteVC = segue.destination as! VoteContentController
+        if let questionId = vote[(tableView.indexPathForSelectedRow?.row)!][3] as? String {
+            voteVC.questionId = Int(questionId)!
         }
+        
+        voteVC.voteTitlte = vote[(tableView.indexPathForSelectedRow?.row)!][0] as! String
     }
     
     @IBAction func close(segue: UIStoryboardSegue){

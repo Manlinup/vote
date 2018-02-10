@@ -26,4 +26,8 @@ struct UserPath {
     static let edit    = "/account/edit"
 }
 
+struct ArticlePath {
+    static let question = "/article/question"
+}
+
 

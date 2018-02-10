@@ -15,6 +15,7 @@ class ContentController: UIViewController {
     @IBOutlet weak var voteTitle: UILabel!
     @IBOutlet weak var voteSort: UILabel!
     @IBOutlet weak var voteNum: UILabel!
+    
     @IBOutlet weak var voteTitlteSelected: UILabel!
     @IBOutlet weak var selcetA: UILabel!//A
     @IBOutlet weak var selcetB: UILabel! //B
@@ -22,136 +23,168 @@ class ContentController: UIViewController {
     @IBOutlet weak var selcetD: UILabel!//D
     @IBOutlet weak var backBtn: UIButton!//保存按钮
     
-    var isBtnSelected = false
+    @IBOutlet weak var btnA: UIButton!
+    @IBOutlet weak var btnB: UIButton!
+    @IBOutlet weak var btnC: UIButton!
+    @IBOutlet weak var btnD: UIButton!
+    
+    @IBOutlet weak var titleLabel: UILabel!
+    
+    var selectButton: UIButton!
     
     var index = 0
     var type = "0"
     var vcControl: VoteContentController!
-
-    var questionArray = Array<XYDVoteContentModel>()
     
-    //从首页传递一个question_id。每个问卷都有一个相应的id
-    var question_id = 4
-    
-    
-    
-    
-    
+    var vote: Vote?
+    var selectValues: [Int : Any]!
     
     //Life Cycle
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.reloadUI()
+        initNav()
+        initData()
+        refreshUI()
     }
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+    }
+    
+    // MARK: Init
+    private func initNav() {
+        if let size = vote?.article?.length {
+            titleLabel.text = "\(self.index+1)/\(size)"
+        }
+    }
+    
+    private func initData() {
+        // do nothing
+    }
+    
+    func refreshUI() {
+        voteSort.text = "第\(index + 1)题"
         
-        self.fatchedAlldata()
+        if let length = vote?.article?.length {
+            voteNum.text = "共\(length)题"
+        }
+        
+        if let title = vote?.article?.title {
+            voteTitle.text = title
+        }
+        
+        guard let question = vote?.questions![index] else {
+            return
+        }
+        
+        voteTitlteSelected.text = question.title
+        
+        guard let choices = question.choices else {
+            return
+        }
+        
+        var i = 0
+        
+        for c in ["A", "B", "C", "D"] {
+            let choice = getChoice(string: c, choices: choices)
+            
+            switch (c) {
+            case "A":
+                selcetA.isHidden = (choice == nil)
+                btnA.isHidden = (choice == nil)
+                if choice != nil {
+                    selcetA.text = "A. \(choice!.c_val ?? "")"
+                    btnA.tag = choice!.id!
+                }
+                
+            case "B":
+                selcetB.isHidden = (choice == nil)
+                btnB.isHidden = (choice == nil)
+                if choice != nil {
+                    selcetB.text = "B. \(choice!.c_val ?? "")"
+                    btnB.tag = choice!.id!
+                }
+            case "C":
+                selcetC.isHidden = (choice == nil)
+                btnC.isHidden = (choice == nil)
+                if choice != nil {
+                    selcetC.text = "C. \(choice!.c_val ?? "")"
+                    btnC.tag = choice!.id!
+                }
+            case "D":
+                selcetD.isHidden = (choice == nil)
+                btnD.isHidden = (choice == nil)
+                if choice != nil {
+                    selcetD.text = "D. \(choice!.c_val ?? "")"
+                    btnD.tag = choice!.id!
+                }
+            default:
+                break
+            }
+            
+            i += i
+        }
+        
+        setupSelectChoice()
     }
     
-    func fatchedAlldata() {//获取数据
-        let parameters:Dictionary = ["question_id":question_id]
-        let headers: HTTPHeaders = ["Accept": "application/json"]
-        Alamofire.request("https://www.bingowo.com/api/index.php/article/question", method: .get, parameters: parameters, encoding: URLEncoding.default, headers: headers).responseJSON { response in
-            
-            switch response.result.isSuccess {
-            case true:
-                if let value = response.result.value {
-                    //JSON Data
-                    guard let data = try? JSONSerialization.data(withJSONObject: value, options: .prettyPrinted) else { return }
-                    let testJson = try? JSONSerialization.jsonObject(with: data, options: .allowFragments)
-                    if let jsonDict = testJson as? NSDictionary {
-                        if let data_1 = jsonDict["data"] as? NSDictionary {
-                            if let content = data_1["content"] as? NSArray {
-                                var contentArray = Array<XYDVoteContentModel>()
-                                for i in 0..<content.count {
-                                    if let questionInfo = content[i] as? NSDictionary {
-                                        let contentInfo: XYDVoteContentModel = XYDVoteContentModel()
-                                        contentInfo.title = questionInfo["title"] as? String
-                                        if let optionArray = questionInfo["choose"] as? NSArray {
-                                            var options = Array<XYDVoteOptionModel>()
-                                            for j in 0..<optionArray.count {
-                                                if let optionDict = optionArray[j] as? NSDictionary {
-                                                    let optionsInfo: XYDVoteOptionModel = XYDVoteOptionModel();
-                                                    optionsInfo.optionTitle = optionDict["c_val"] as? String
-                                                    options.append(optionsInfo)
-                                                }
-                                            }
-                                            contentInfo.options = options
-                                        }
-                                        contentArray.append(contentInfo)
-                                    }
-                                }
-                                self.questionArray = contentArray
-                                self.reloadUI()
-                            }
-                        }
-                    }
-                }
-            case false:
-                print(response.result.error ?? "")
+    private func setupSelectChoice() {
+        guard let question = vote?.questions![index] else {
+            return
+        }
+        
+        if let choiceId = selectValues[question.id!] as? Int {
+            let selectBtn = view.viewWithTag(choiceId) as! UIButton
+            if self.selectButton != selectBtn {
+                selectButton = selectBtn
+                selectBtn.backgroundColor = selectedcolor
+                selectBtn.isSelected = true
             }
         }
     }
     
-    func reloadUI() {
-        if self.questionArray.count > 0 {
-            let questionInfo = self.questionArray[index]
-            voteNum.text = "共\(self.questionArray.count)题"
-            voteSort.text = "第\(index + 1)题"
-            
-            let lineheight = NSMutableParagraphStyle()
-            lineheight.lineSpacing = 10
-            let attributes = [NSAttributedStringKey.paragraphStyle: lineheight]
-            voteTitlteSelected.attributedText = NSAttributedString(string:"\(questionInfo.title ?? "")", attributes: attributes)
-            
-            for i in 0..<questionInfo.options.count {
-                let optionInfo = questionInfo.options[i]
-                if i == 0 {
-                    self.selcetA.text = optionInfo.optionTitle
-                }
-                if i == 1 {
-                    self.selcetB.text = optionInfo.optionTitle
-                }
-                if i == 2 {
-                    self.selcetC.text = optionInfo.optionTitle
-                }
-                if i == 3 {
-                    self.selcetD.text = optionInfo.optionTitle
-                }
+    private func getChoice(string: String,  choices: [Choice]) -> Choice? {
+        for c in choices {
+            if string == c.c_num {
+                return c
             }
         }
+        
+        return nil
     }
-
-    
-    
-    
-    
-    //Other
 
     var normlcolr = UIColor.init(red: 214/255, green: 215/255, blue: 220/255, alpha: 1.0)//选中颜色
     var selectedcolor = UIColor.init(red: 75/255, green: 166/255, blue: 103/255, alpha: 1.0)//常规颜色
     
-    @IBAction func selcetbtn(_ sender: UIButton) {//选择按钮
-        if type == "1"{//单选
-            if isBtnSelected {
-                return
+    @IBAction func selcetbtn(_ sender: UIButton) {
+        if selectButton == sender {
+            selectButton = nil
+            sender.isSelected = false
+            sender.backgroundColor = normlcolr
+            
+            if let question = vote?.questions![index] {
+                selectValues.removeValue(forKey: question.id!)
             }
-            isBtnSelected = true
-            sender.backgroundColor = selectedcolor //选中颜色
-            sender.isSelected = true
-        }
-        if type == "2"{//多选
-            sender.backgroundColor = selectedcolor //选中颜色
-            sender.isSelected = true
-        }
         
-            if (index + 1) == self.questionArray.count {
+        } else {
+            if let btn = selectButton {
+                btn.isSelected = false
+                btn.backgroundColor = normlcolr
+            }
+            
+            selectButton = sender
+            sender.isSelected = true
+            sender.backgroundColor = selectedcolor
+            
+            if let question = vote?.questions![index] {
+                selectValues[question.id!] = sender.tag
+            }
+            
+            if selectValues.count == self.vote?.questions?.count {
                 alert2("最后一题了,请点击保存")
             }
+        }
     }
     
     @IBAction func backBtn(_ sender: UIButton) {//保存按钮
