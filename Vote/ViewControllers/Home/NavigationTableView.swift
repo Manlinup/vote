@@ -43,7 +43,7 @@ class NavigationTableView: UITableViewController {
                     for (key,value) in json["data"].enumerated() {
                         //print(json["data"][key]["title"].string!)
                         var voteData = [json["data"][key]["title"].string!,
-                                        json["data"][key]["num"].string!,
+                                        json["data"][key]["price"].string!,
                                         json["data"][key]["time"].string!,
                                         json["data"][key]["question_id"].string!]
                         array.append(voteData)
@@ -88,7 +88,6 @@ class NavigationTableView: UITableViewController {
     }
 
     // MARK: - Navigation
-
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         guard checkLoginStatus() else { return }
