@@ -15,7 +15,7 @@ class SurveyTarget03TableViewController: UITableViewController {
     @IBOutlet weak var done: UIBarButtonItem!
     var selectText = ""
     var saveText:String?
-    var  object01: Array<String>!
+    var  object01 = ["学生", "白领", "工人","其他"]
     
     override func viewDidLoad() {
         super.viewDidLoad()

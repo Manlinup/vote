@@ -12,9 +12,6 @@ class SelectedTypeController: UIViewController {
     let udname = UserDefaultsKey.SelectedTopicsType()//获取UserDefaults名称
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-
-        
     }
 
     override func didReceiveMemoryWarning() {
@@ -38,17 +35,7 @@ class SelectedTypeController: UIViewController {
            performSegue(withIdentifier: "MultipleChoice", sender: self)
         default:break
         }
-        
-        
     }
-    
-    
-   
-
-    
- 
-    
-    
 
     /*
     // MARK: - Navigation
@@ -59,7 +46,4 @@ class SelectedTypeController: UIViewController {
         // Pass the selected object to the new view controller.
     }
     */
-
-    
-    
 }

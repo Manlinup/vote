@@ -39,10 +39,10 @@ class NavigationTableView: UITableViewController {
                 if let value = response.result.value {
                     let json = JSON(value)
                     log.debug(json)
-                   // print(json["data"][0]["title"])
-                    for (key,value) in json["data"].enumerated() {
+                    
+                    for (key, _) in json["data"].enumerated() {
                         //print(json["data"][key]["title"].string!)
-                        var voteData = [json["data"][key]["title"].string!,
+                        let voteData = [json["data"][key]["title"].string!,
                                         json["data"][key]["price"].string!,
                                         json["data"][key]["time"].string!,
                                         json["data"][key]["question_id"].string!]
@@ -55,6 +55,7 @@ class NavigationTableView: UITableViewController {
             }
         }
     }
+    
     func reloadUI(_ array:Array<Any>) -> Void {
         vote = array as! Array
         mainAsync {

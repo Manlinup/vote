@@ -1602,7 +1602,7 @@
         <!--SurveyTarget01-->
         <scene sceneID="ab9-Ex-ada">
             <objects>
-                <tableViewController hidesBottomBarWhenPushed="YES" id="T4Y-0c-L1F" userLabel="SurveyTarget01" customClass="SurveyTarget01TableViewController" customModule="Vote" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="SurveyTarget01" hidesBottomBarWhenPushed="YES" id="T4Y-0c-L1F" userLabel="SurveyTarget01" customClass="SurveyTarget01TableViewController" customModule="Vote" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="45" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="AEQ-Mb-tAh">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

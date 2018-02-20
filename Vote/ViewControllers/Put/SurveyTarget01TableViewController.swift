@@ -9,8 +9,11 @@
 import UIKit
 
 class SurveyTarget01TableViewController: UITableViewController {
-    var object01 = [String]()
-
+    var  object01 = ["学生", "白领", "工人","其他"]
+    var saveText: String!
+    
+    var delegate: PutMainTableControllerDelegate?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -49,8 +52,13 @@ class SurveyTarget01TableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         //tableView.deselectRow(at: indexPath, animated: true)//点击完成取消行高亮
-        performSegue(withIdentifier: "SurveyTargetLink02", sender:self )//转场下一页
+//        performSegue(withIdentifier: "SurveyTargetLink02", sender:self )//转场下一页
+        saveText = object01[indexPath.row]
+        if let delegate = delegate {
+            delegate.updateSurveyTarget(text: saveText)
+        }
         
+        self.dismiss(animated: true, completion: nil)
     }
     
     var index:Int?

@@ -8,7 +8,11 @@
 
 import UIKit
 
-class PutMainTableController: UITableViewController, UITextFieldDelegate {
+protocol PutMainTableControllerDelegate {
+    func updateSurveyTarget(text: String)
+}
+
+class PutMainTableController: UITableViewController, UITextFieldDelegate, PutMainTableControllerDelegate {
 
     @IBOutlet weak var answer: UITextField!//谁来回答
     @IBOutlet weak var num: UITextField!//问卷数量
@@ -48,7 +52,6 @@ class PutMainTableController: UITableViewController, UITextFieldDelegate {
         
         self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action:nil)//导航返回按钮样式
     }
-     
     
     @objc func handTap (sender:UITapGestureRecognizer){
         if sender.state == .ended{
@@ -157,7 +160,14 @@ class PutMainTableController: UITableViewController, UITextFieldDelegate {
     }
     
     @IBAction func surveytarget(_ sender: UIButton) {//跳转谁来回答
-         performSegue(withIdentifier: "SurveyTargetLink", sender:self)
+//         performSegue(withIdentifier: "SurveyTargetLink", sender:self)
+        
+        if let contentVc = self.storyboard?.instantiateViewController(withIdentifier: "SurveyTarget01") as? SurveyTarget01TableViewController {
+            contentVc.delegate = self
+            let navigationVC = UINavigationController(rootViewController: contentVc)
+            
+            self.navigationController?.present(navigationVC, animated: true, completion: nil)
+        }
     }
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
@@ -244,19 +254,20 @@ class PutMainTableController: UITableViewController, UITextFieldDelegate {
         }
        
     }
+    
+    // MARK - Action
+    func updateSurveyTarget(text: String) {
+            answer.text = text
+    }
+    
     //SurveyTargetLink
     @IBAction func closeSurveyTarget(segue:UIStoryboardSegue){
-       
         if segue.identifier == "closeSurveyTargetlast" {
-            let info = segue.source as! SurveyTarget03TableViewController
+            let info = segue.source as! SurveyTarget01TableViewController
             if let dest = info.saveText {
                 answer.text = dest
             }
             
         }
     }
-   
-
-    
-    
 }
