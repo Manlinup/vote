@@ -29,7 +29,7 @@
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="pd1-4e-a3T">
                                         <rect key="frame" x="0.0" y="9.6666666666666714" width="384" height="81"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="748" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FC6-XR-MPp">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="748" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="7" translatesAutoresizingMaskIntoConstraints="NO" id="FC6-XR-MPp">
                                                 <rect key="frame" x="0.0" y="0.0" width="384" height="20.333333333333332"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -2560,7 +2560,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sGD-Jg-Yhg" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3303.1999999999998" y="886.50674662668678"/>
+            <point key="canvasLocation" x="3296" y="782"/>
         </scene>
         <!--Questionnaire-->
         <scene sceneID="a0g-rk-pI9">
@@ -2705,7 +2705,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eta-GY-l5Q" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4116" y="886.50674662668678"/>
+            <point key="canvasLocation" x="4719" y="782"/>
         </scene>
         <!--我的投票-->
         <scene sceneID="Uof-gq-TZR">
@@ -2737,7 +2737,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GA7-Uw-Scb" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3695.652173913044" y="766.304347826087"/>
+            <point key="canvasLocation" x="4003" y="782"/>
         </scene>
         <!--QuestionnaireDetails-->
         <scene sceneID="YiC-nu-5u9">
@@ -3057,7 +3057,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Spp-8i-z86" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4911.1999999999998" y="886.50674662668678"/>
+            <point key="canvasLocation" x="5464" y="782"/>
         </scene>
         <!--Account-->
         <scene sceneID="Cd2-Xk-OT0">
@@ -6901,6 +6901,6 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="9JI-tw-bf1"/>
-        <segue reference="qwy-90-teI"/>
+        <segue reference="U0S-Nd-lzM"/>
     </inferredMetricsTieBreakers>
 </document>
