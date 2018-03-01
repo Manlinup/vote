@@ -9,8 +9,6 @@
 import UIKit
 
 class QuestionnaireDetailsTableViewController: UITableViewController {
-
-    
     
     var navtitle = ""
     var statustext = ""
