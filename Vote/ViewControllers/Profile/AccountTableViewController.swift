@@ -60,9 +60,11 @@ class AccountTableViewController: UITableViewController {
         case 1:
             performSegue(withIdentifier: "BankCardLink", sender:self )//跳转到银行卡
         case 2:
-            alert("努力建设中...")
+//            alert("努力建设中...")
+            break
         case 3:
-            alert("努力建设中...")
+//            alert("努力建设中...")
+            break
         default:
             break
         }

@@ -23,14 +23,14 @@ class PutListTableController: UITableViewController, UITextFieldDelegate {
     
     
     var contant = [
-                    ["大浪淘沙","单选"],
-                    ["你看过吉泽明步老师的拍的动作片吗？","多选"],
-                    ["大浪淘沙","多选"],
-                    ["大师教你卖关子","单选"],
-                    ["嘻哈的特点","单选"],
-                    ["陈冠希睡过几个女人","多选"],
-                    ["你看过苍老师的拍的动作片吗？","单选"],
-                    ["大浪淘沙","多选"],
+                    ["您处于什么年龄阶段？","单选"],
+                    ["您所在的城市是？","单选   "],
+                    ["最近两个月您有随份子钱吗？","单选"],
+                    ["您会如何”随份子“？","单选"],
+                    ["您随过金额最高的份子钱是多少？","单选"],
+                    ["份子钱让您有压力吗？","单选"],
+                    ["你如何看待“随份子”？","多选"],
+                    ["你会不会凭礼金多少定关系亲疏？","单选"],
                    ]
     
     override func viewDidLoad() {
@@ -86,7 +86,7 @@ class PutListTableController: UITableViewController, UITextFieldDelegate {
     func alertsheet(_ title:String){//分享弹框
         let action = UIAlertController(title:title, message:nil , preferredStyle:.actionSheet )
         let op = UIAlertAction(title: "支付发布", style:.default) { (_) in
-           self.alert("努力建设中")
+           self.alert("已提交，等待审核")
         }
         let op2 = UIAlertAction(title: "保存草稿", style:.default) { (_) in
             self.alert("已保存")

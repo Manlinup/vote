@@ -14,18 +14,17 @@ class QuestionnaireTableViewController: UITableViewController,UISearchResultsUpd
         //当用户点击搜索条或者该文字的时候调用这个方法
     }
     
-    
     var search:UISearchController! //添加搜索条
 
-    var title0 = ["1改变的结果不到结果",
-                  "2不管结果都被感动过的几个的机会改变的结果不到结果",
-                  "3几个的机会改变",
-                  "4不管结果不到结果",
-                  "5不管结果不到结果",
-                  "6不管结果不到结果",
-                    "7不管结果不到结果"]
-    var num01 = ["1000","2222","2222","2222","2222","2222","2222"]
-    var mun02 = ["444","555","555","555","444","555","555",]
+    var title0 = ["数码家电产品满意度调研",
+                  "餐厅服务需求调研",
+                  "大学生消费情况调研",
+                  "培训满意度调研",
+                  "手机市场满意度调研",
+                  "员工满意度调研",
+                  "美妆产品满意度调研"]
+    var num01 = ["88","1242","982","501","876","788","1083"]
+    var mun02 = ["30","708","583","329","306","238","689",]
     var s = ["已完成","进行中","已完成","未发布","进行中","已完成","未发布"]
     
     override func viewDidLoad() {
@@ -35,7 +34,6 @@ class QuestionnaireTableViewController: UITableViewController,UISearchResultsUpd
 
         tableView.tableFooterView = UIView(frame: CGRect.zero)//去除页脚
         self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)//导航返回按钮样式
-        
         
         //搜索条
         search = UISearchController(searchResultsController: nil)

@@ -61,6 +61,7 @@
 		9303689720296E2100C8FB55 /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9303689620296E2100C8FB55 /* NetworkService.swift */; };
 		9303689A2029D86600C8FB55 /* VTAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 930368992029D86600C8FB55 /* VTAlert.swift */; };
 		930DA981202B4EF50038F5F6 /* ArticleService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 930DA980202B4EF50038F5F6 /* ArticleService.swift */; };
+		935596BC2047955E00EE50E7 /* MyVoteTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 935596BB2047955E00EE50E7 /* MyVoteTableViewController.swift */; };
 		93586BC620275C0E007F84B1 /* APIDefine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93586BC420275C0E007F84B1 /* APIDefine.swift */; };
 		93586BC720275C0E007F84B1 /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93586BC520275C0E007F84B1 /* Config.swift */; };
 		93586BCB20275C4E007F84B1 /* VHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93586BC920275C4E007F84B1 /* VHelper.swift */; };
@@ -136,6 +137,7 @@
 		9303689620296E2100C8FB55 /* NetworkService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
 		930368992029D86600C8FB55 /* VTAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VTAlert.swift; sourceTree = "<group>"; };
 		930DA980202B4EF50038F5F6 /* ArticleService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleService.swift; sourceTree = "<group>"; };
+		935596BB2047955E00EE50E7 /* MyVoteTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyVoteTableViewController.swift; sourceTree = "<group>"; };
 		93586BC420275C0E007F84B1 /* APIDefine.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIDefine.swift; sourceTree = "<group>"; };
 		93586BC520275C0E007F84B1 /* Config.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Config.swift; sourceTree = "<group>"; };
 		93586BC920275C4E007F84B1 /* VHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VHelper.swift; sourceTree = "<group>"; };
@@ -284,6 +286,7 @@
 				4CC6D4111FCD3232009B7F02 /* RechargeTableViewController.swift */,
 				4CC6D4171FCD5554009B7F02 /* QuestionnaireDetailsTableViewController.swift */,
 				4CA04A501FE9FDD400ECEDE4 /* SetTableViewController.swift */,
+				935596BB2047955E00EE50E7 /* MyVoteTableViewController.swift */,
 				4CC6D4131FCD3F31009B7F02 /* QuestionnaireTableViewController.swift */,
 				4C4C99371FDD1ED90097704E /* BankCardTableViewController.swift */,
 				4CC6D40D1FCD0D78009B7F02 /* AccountTableViewController.swift */,
@@ -605,6 +608,7 @@
 				93586BF420276560007F84B1 /* VUserDefaults.swift in Sources */,
 				93586BF120276079007F84B1 /* Error+VT.swift in Sources */,
 				27C77B8B1FC2AB0500F807EF /* PutFirstViewController.swift in Sources */,
+				935596BC2047955E00EE50E7 /* MyVoteTableViewController.swift in Sources */,
 				4C34F7111FE1037E007F8F57 /* EditQuestionnaireNameViewController.swift in Sources */,
 				4CA04A611FEA5BB100ECEDE4 /* SurveyTarget01TableViewCell.swift in Sources */,
 				4C768D821FD9253A00A53447 /* EditUserInformationTwoTableViewCell.swift in Sources */,

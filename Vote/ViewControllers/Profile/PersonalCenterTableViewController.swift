@@ -189,7 +189,7 @@ class PersonalCenterTableViewController: UITableViewController {
     
     @IBAction func myvote(_ sender: UIButton) {//我的投票
         guard checkLoginStatus() else { return }
-        alert("努力建设中...")
+        performSegue(withIdentifier: "QuestionnaireLink", sender:self )
     }
     
     @IBAction func setLink(_ sender: UIBarButtonItem) {//跳转到设置
